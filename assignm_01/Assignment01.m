@@ -27,5 +27,9 @@ test_data = [test_data_class1; test_data_class2];
 test_label(1:n1) = 1;
 test_label(n1+1:n1+n2) = 2;
 
-% Section 4
-knnClassify(train_data, train_label, test_data, 5)
+figure(1); clf; hold all; axis equal;
+plot(test_data(1:n1,1), test_data(1:n1,2), 'r*');
+plot(test_data(n1+1:n1+n2,1), test_data(n1+1:n1+n2,2), 'bo');
+
+%% Section 4
+knnClassify(train_data, train_label, test_data, 5);
