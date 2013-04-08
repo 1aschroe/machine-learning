@@ -1,3 +1,5 @@
+Clear all; clc;
+
 
 %% Section 1
 % The data for class 1 is random 30 x 2 matrix with values in the interval (0.0, 1.0).
