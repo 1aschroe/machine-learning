@@ -21,3 +21,6 @@ test_data_class2 = rand(n2,2) + ones(n2,2)*[1 0; 0 0];
 test_data = [test_data_class1; test_data_class2];
 test_label(1:n1) = 1;
 test_label(n1+1:n1+n2) = 2;
+
+% Section 4
+knnClassify(train_data, train_label, test_data, 5)
