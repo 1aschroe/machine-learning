@@ -5,7 +5,7 @@ clear all; clc; clf;
 % The data for class 1 is random 30 x 2 matrix with values in the interval (0.0, 1.0).
 % The data for class 2 is again random 30 x 2 matrix, but the first column has
 % values in the interval (1.0, 2.0).
-% The data is represented as 2D points when ploted.
+% The data is represented as 2D points when plotted.
 
 n1 = 30;
 train_data_class1 = rand(n1,2);
