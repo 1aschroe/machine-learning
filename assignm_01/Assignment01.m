@@ -1,4 +1,4 @@
-Clear all; clc;
+clear all; clc;
 
 
 %% Section 1
@@ -34,4 +34,7 @@ plot(test_data(1:n1,1), test_data(1:n1,2), 'r*');
 plot(test_data(n1+1:n1+n2,1), test_data(n1+1:n1+n2,2), 'bo');
 
 %% Section 4
-knnClassify(train_data, train_label, test_data, 5);
+pred_label = knnClassify(train_data, train_label, test_data, 5);
+
+%% Section 5
+loss01(pred_label, test_label);
