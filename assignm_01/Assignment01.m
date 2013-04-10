@@ -16,14 +16,8 @@ doExercise1(1000,50, 100);
 %% Exercise 2
 clear all; clc;
 
-%% Section 3
-figure;
-dig = reshape(train_data(1012,:),16,16);
-imagesc(dig)
-colormap('gray');
-
-%% Sections 1,2,4
-doExercise2(2, 3);
+%% Sections 1-4
+doExercise2(2, 3)
 
 %% Section 5
-doExercise2(3, 8);
+doExercise2(3, 8)

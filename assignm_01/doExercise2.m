@@ -1,4 +1,4 @@
-function [ ] = doExercise2( number1, number2 )
+function [ errValue ] = doExercise2( number1, number2 )
 
 %% Section 1
 load('usps_train.mat');
@@ -12,8 +12,10 @@ testList = find(test_label==number1 | test_label==number2);
 x_test = double(test_data(testList,:));
 y_test = double(test_label(testList));
 
+%% Section 3
+% see drawNumber
 
 %% Section 4
-evaluateK(x_train, y_train, x_test, y_test);
+[ minK, errValue ] = evaluateK(x_train, y_train, x_test, y_test);
 end
 
