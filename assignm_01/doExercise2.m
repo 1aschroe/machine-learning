@@ -12,11 +12,6 @@ testList = find(test_label==number1 | test_label==number2);
 x_test = double(test_data(testList,:));
 y_test = double(test_label(testList));
 
-%% Section 3
-figure(4);
-dig = reshape(train_data(1012,:),16,16);
-imagesc(dig)
-colormap('gray');
 
 %% Section 4
 evaluateK(x_train, y_train, x_test, y_test);

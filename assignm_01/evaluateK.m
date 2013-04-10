@@ -22,7 +22,7 @@ end
 
 %% Section 7
 
-figure(2); clf; hold all;
+figure; clf; hold all;
 plot(k_values,error_test,'r*:');
 plot(k_values,error_train,'b.-');
 

@@ -17,7 +17,7 @@ train_label(1:n1,1) = 1;
 train_label(n1+1:n1+n2,1) = 2;
 
 %% Section 2
-figure(1); clf; hold all; axis equal;
+figure; clf; hold all; axis equal;
 plot(train_data(1:n1,1), train_data(1:n1,2), 'r*');
 plot(train_data(n1+1:n1+n2,1), train_data(n1+1:n1+n2,2), 'bo');
 
@@ -41,7 +41,7 @@ test_label(n1+1:n1+n2,1) = 2;
 
 pred_label = knnClassify(train_data, train_label, test_data, minK);
 
-figure(3); clf; hold all; axis equal;
+figure; clf; hold all; axis equal;
 pred_class1 = find(pred_label==1);
 pred_class2 = find(pred_label==2);
 plot(test_data(pred_class1,1),test_data(pred_class1,2),'r*');
