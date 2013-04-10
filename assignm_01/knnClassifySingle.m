@@ -6,15 +6,7 @@ function pred = knnClassifySingle( train_data, train_label, test_datum, k )
 distances = sqrt(sum((train_data - ones(size(train_data,1),1)*test_datum).^2,2));
 [sorted,index] = sort(distances);
 closest_labels = train_label(index);
-label_sum = 0;
-for it = 1:k
-    label_sum = label_sum + closest_labels(it);
-end
 
-if label_sum / k < 1.5
-    pred = 1;
-else
-    pred = 2;
-end
+pred = mode(closest_labels(1:k));
 
 end

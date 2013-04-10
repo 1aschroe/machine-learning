@@ -13,8 +13,8 @@ train_data_class1 = rand(n1,2);
 n2 = trainN2;
 train_data_class2 = rand(n2,2) + ones(n2,2)*[1 0; 0 0];
 train_data = [train_data_class1; train_data_class2];
-train_label(1:n1) = 1;
-train_label(n1+1:n1+n2) = 2;
+train_label(1:n1,1) = 1;
+train_label(n1+1:n1+n2,1) = 2;
 
 %% Section 2
 figure(1); clf; hold all; axis equal;
@@ -27,8 +27,8 @@ test_data_class1 = rand(n1,2);
 n2 = testNumbers;
 test_data_class2 = rand(n2,2) + ones(n2,2)*[1 0; 0 0];
 test_data = [test_data_class1; test_data_class2];
-test_label(1:n1) = 1;
-test_label(n1+1:n1+n2) = 2;
+test_label(1:n1,1) = 1;
+test_label(n1+1:n1+n2,1) = 2;
 
 %% Section 4
 %% See function knnClassify

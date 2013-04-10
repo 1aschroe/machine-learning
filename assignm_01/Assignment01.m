@@ -1,13 +1,48 @@
 clear all; clc; clf;
 
-%% Exercise 1-8:
+%% Exercise 1
+%% Sections 1-8:
 doAssignment1(30,30, 100);
 
-%% Exercise 9
+%% Section 9
 doAssignment1(200,200, 100);
 
-%% Exercise 10
+%% Section 10
 %% The error value for uneven classes always considerably bigger.
 %% The error value increases monotonically with respect to k.
 doAssignment1(1000,50, 100);
 
+
+%% Exercise 2
+%% Section 1
+clear all; clc;
+load('usps_train.mat');
+trList = find(train_label==2 | train_label==3);
+x_train = double(train_data(trList,:));
+y_train = double(train_label(trList));
+
+%% Section 2
+load('usps_test.mat');
+testList = find(test_label==2 | test_label==3);
+x_test = double(test_data(testList,:));
+y_test = double(test_label(testList));
+
+%% Section 3
+dig = reshape(train_data(1012,:),16,16);
+imagesc(dig)
+colormap('gray');
+
+%% Section 4
+k_values = [1 3 5 7 9 10 11 15];
+error_test = zeros(1, length(k_values));
+error_train = zeros(1, length(k_values));
+for it = 1:length(k_values)
+    test_pred_label = knnClassify(x_train, y_train, x_test, k_values(it));
+    error_test(it) = loss01(test_pred_label, y_test);
+    train_pred_label = knnClassify(x_train, y_train, x_train, k_values(it));
+    error_train(it) = loss01(train_pred_label, y_train);
+end
+
+figure(5); clf; hold all;
+plot(k_values,error_test,'r*:');
+plot(k_values,error_train,'b.-');
