@@ -1,4 +1,4 @@
-function [ ] = doAssignment1( trainN1, trainN2, testNumbers )
+function [ ] = doExercise1( trainN1, trainN2, testNumbers )
 %Assignment one Exercises 1-8 can be found here.
 
 
