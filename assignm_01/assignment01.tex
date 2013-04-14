@@ -1,0 +1,68 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent-Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃ¼rlich unterstÃ¼tzt ;-)
+% parskip        Absatzabstand anstatt EinzÃ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. âmacceâ anstatt âutf8â.
+ 
+\usepackage{textcomp}       % ZusÃ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{listings}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 01}
+\author{Arne Schr�der, Falk Oswald, Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+ 
+ 
+\section*{Matlab Implementation}
+First, we introduce and briefly describe our M files, included in the attached zip file.
+
+\begin{itemize}
+	\item \textbf{knnClassifySingle.m} - function, that uses k-nearest neighbours method to predict label of single datum
+	\item \textbf{knnClassify.m} - function, that uses k-nearest neighbours method to predict labels
+	\item \textbf{evaluateK.m} - evaluates knnClassify for different k-values and returns the minimal k
+	\item \textbf{loss01.m} - Gets as input a prediction calculated by the knnClasifiy and correct labels y. The function returns the average error (empirical risk with respect to the 0-1 loss) for this prediction.
+	\item \textbf{drawNumber.m} - visualize a number using \textit{imagesc}
+	\item \textbf{doExercise1.m} - loads all training and test data for exercise 1, calls knnClassify and plots the result
+	\item \textbf{doExercise2.m} - loads all training and test data for exercise 2, calls knnClassify and plots the result
+	\item \textbf{Assignment01.m} - the main script, calls doExercise1 and doExercise2 with different parameters
+\end{itemize}
+
+\section*{Questions}
+
+\subsection*{Exercise 1}
+
+ \textbf{7. Plot the training and the test errors. Do results change between different runs? Why?} \\
+ 
+ Yes, the results change between different runs. The reason is, that we use random training and test data. For each run the data is different, so we get different results. \\\\
+ 
+ \textbf{9. More training examples. How does the performance of kNN classifier change?} \\
+ 
+ The performance of the classifier is the same like before for the test data, increases however approximately by factor 10 for the training data.\\\\
+ 
+ \textbf{10. Unbalanced classes. More training examples. How does the performance of kNN classifier change?} \\
+ 
+ The performance of the classifier increases approximately by factor $1/3$ for the test data and by factor 40 for the test data.
+ 
+\end{document}
