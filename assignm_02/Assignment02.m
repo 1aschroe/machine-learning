@@ -29,3 +29,16 @@ doExercise2(X, Y);
 
 % 0; 1; 6; 7 in class 1
 % 2; 3; 4; 5 in class 2
+
+%% Exercise 4
+%% Section 1
+clf;
+
+[X Y] = mixGaussian2d(100,0.4,0.6);
+
+hold all;
+plot(X(Y==1,:), 'r.')
+plot(X(Y==2,:), 'bo')
+
+mean(X)
+var(X)
