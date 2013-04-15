@@ -5,7 +5,7 @@ function pred = knnClassifySingle( train_data, train_label, test_datum, k )
 
 %Unserse Lösung
 %distances = sqrt(sum((train_data - ones(size(train_data,1),1)*test_datum).^2,2));
-distances = pdist2(test_data, train_data, 'euclidean');
+distances = pdist2(test_datum, train_data, 'euclidean');
 [~,index] = sort(distances);
 closest_labels = train_label(index);
 
