@@ -1,19 +1,6 @@
 %% Exercise 1
-%% Section 1
-load('20Newsgroup.mat');
-trainList = find(y_train==6 | y_train==8);
-x_train_6_8 = x_train(trainList,:);
-y_train_6_8 = y_train(trainList);
+doExercise1
 
-%% Section 2
-load('20Newsgroup.mat');
-testList = find(y_test==6 | y_test==8);
-x_test_6_8 = x_test(testList,:);
-y_test_6_8 = y_test(testList);
-
-%% Section 3
-x_test_cropped = x_test_6_8(:,1:size(x_train_6_8,2));
-y_test_cropped = y_test_6_8(:,1:size(y_train_6_8,2));
-
-%% Section 4
-evaluateK(x_train, y_train, x_test_cropped, y_test_cropped);
+%% Exercise 2
+%% Section1
+[X,Y] = mixGaussian1d(1000,0.5,0.5,0,6,1,2);
