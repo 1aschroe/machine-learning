@@ -34,7 +34,7 @@ doExercise2(X, Y);
 %% Section 1
 clf;
 
-[X Y] = mixGaussian2d(100,0.4,0.6);
+[X, Y] = mixGaussian2d(100,0.4,0.6);
 
 hold all;
 plot(X(Y==1,:), 'r.')
