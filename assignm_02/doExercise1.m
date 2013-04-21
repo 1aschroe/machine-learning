@@ -1,5 +1,5 @@
 function [ ] = doExercise1( )
-%DOEXERCISE1 This is our implementation for exercise 1 (very slow!!!)
+%DOEXERCISE1 This is our implementation for exercise 1
 %% Section 1
 load('20Newsgroup.mat');
 trainList = find(y_train==6 | y_train==8);
