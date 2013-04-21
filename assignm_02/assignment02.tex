@@ -26,8 +26,8 @@
 
 
 \title{Machine Learning SS2013}
-\subtitle{Ulrike von Luxburg \\ Assignment 01}
-\author{Arne Schröder, Falk Oswald, Angel Bakardzhiev}
+\subtitle{Ulrike von Luxburg \\ Assignment 02}
+\author{Arne Schröder \and Falk Oswald \and Angel Bakardzhiev}
  
 \date{\today}               % \today setzt das heutige Datum
  
@@ -40,33 +40,13 @@
 First, we introduce and briefly describe our M files, included in the attached zip file.
 
 \begin{itemize}
-	\item \textbf{knnClassifySingle.m} - function, that uses k-nearest neighbours method to predict label of single datum
 	\item \textbf{knnClassify.m} - function, that uses k-nearest neighbours method to predict labels
 	\item \textbf{evaluateK.m} - evaluates knnClassify for different k-values and returns the minimal k
 	\item \textbf{loss01.m} - Gets as input a prediction calculated by the knnClasifiy and correct labels y. The function returns the average error (empirical risk with respect to the 0-1 loss) for this prediction.
-	\item \textbf{drawNumber.m} - visualize a number using \textit{imagesc}
 	\item \textbf{doExercise1.m} - loads all training and test data for exercise 1, calls knnClassify and plots the result
-	\item \textbf{doExercise2.m} - loads all training and test data for exercise 2, calls knnClassify and plots the result
-	\item \textbf{Assignment01.m} - the main script, calls doExercise1 and doExercise2 with different parameters
+	\item \textbf{doExercise2.m} - loads all training and test data for exercise 2, calculates and plots the results
+	\item \textbf{Assignment02.m} - the main script, calls doExercise1 and doExercise2 with different parameters, also contains the code for exercise 4
 \end{itemize}
-
-\section*{Questions}
-
- \paragraph{1.7. Plot the training and the test errors. Do results change between different runs? Why?} \hfill
- 
- Yes, the results change between different runs. The reason is, that we use random training and test data. For each run the data is different, so we get different results.
- 
- \paragraph{1.9. More training examples. How does the performance of kNN classifier change?} \hfill
- 
- The performance of the classifier is the same like before for the test data, increases however approximately by factor 10 for the training data.
- 
- \paragraph{1.10. Unbalanced classes. How does the performance of kNN classifier change?} \hfill
- 
- The error of the classifier increases approximately by factor $1/2$ for the training data and by factor 40 for the test data.
- 
- \paragraph{2.5. Run your algorithm to classify digit 3 from 8 and compare its performance with results from digit 2 versus 3.} \hfill
- 
- The results from both runs are similar in general. Over all the classification between 3 and 8 has errors higher by factor 3.
  
 \section*{Exercise 5}
 
@@ -76,7 +56,7 @@ What are false positive, false negative and average error of you(r) calssifier?
 
 \subsection*{Answer}
 
-To answer this question we simply need to fill out the following table:
+To answer this question we simply need to fill out the following table:\\
 
 \begin{tabular}{c||c|c|c}
 & spam & not spam & overall \\ 
@@ -90,7 +70,7 @@ To answer this question we simply need to fill out the following table:
 
 We know that 85 \% of spam is classified as such, which gives us that $60 \% \cdot 85 \% = 51 \%$ of mails are spam and are classified as spam.
 
-As 60 \% of all mail is spam, 40 \% of mail is not. This means that if 5 \% of all non-spam mails are classified as spam this is 2 \% of all mails.
+As 60 \% of all mail is spam, 40 \% of mail is not. This means that if 5 \% of all non-spam mails are classified as spam this is 2 \% of all mails.\\
 
 \begin{tabular}{c||c|c|c}
 & spam & not spam & overall \\ 
@@ -102,7 +82,7 @@ As 60 \% of all mail is spam, 40 \% of mail is not. This means that if 5 \% of a
  overall & 60 \% & 40 \% & 
 \end{tabular}
 
-Subtraction now tells us that 9 \% of mails are spam but not classified spam and 38 \% are spam and correctly classified.
+Subtraction now tells us that 9 \% of mails are spam but not classified spam and 38 \% are spam and correctly classified.\\
 
 \begin{tabular}{c||c|c||c}
 & spam & not spam & overall \\ 
