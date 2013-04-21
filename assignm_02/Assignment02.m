@@ -1,7 +1,7 @@
 clf;
 
 %% Exercise 1
-%doExercise1
+doExercise1
 
 %% Exercise 2
 %% Section 1

@@ -20,4 +20,3 @@ y_test_cropped = y_test_6_8(:,1:size(y_train_6_8,2));
 evaluateK(x_train, y_train, x_test_cropped, y_test_cropped);
 
 end
-
