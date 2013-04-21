@@ -17,6 +17,6 @@ x_test_cropped = x_test_6_8(:,1:size(x_train_6_8,2));
 y_test_cropped = y_test_6_8(:,1:size(y_train_6_8,2));
 
 %% Section 4
-evaluateK(x_train, y_train, x_test_cropped, y_test_cropped);
+evaluateK(x_train_6_8, y_train_6_8, x_test_cropped, y_test_cropped);
 
 end
