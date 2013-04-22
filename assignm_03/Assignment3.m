@@ -47,7 +47,11 @@ end
 
 w = LLS(x_for_lls, y_train);
 
-f = @(x) 0;
-for it=1:15
-    f = f + w(it).*basis_fun{it};
+xx = -1.5:0.01:2.5;
+
+yy = zeros(1, length(xx));
+for it=1:15 
+    yy = yy + w(it)*basis_fun{it}(xx);
 end
+
+plot(xx, yy)
