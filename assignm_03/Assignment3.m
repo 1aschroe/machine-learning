@@ -54,4 +54,9 @@ for it=1:15
     yy = yy + w(it)*basis_fun{it}(xx);
 end
 
-plot(xx, yy)
+plot(xx, yy);
+
+%% Section 4
+
+% The class of functions that can be learned are polynomials up to degree
+% 15.
