@@ -8,11 +8,6 @@ hold on;
 plot(x_train,y_train, 'kx');
 plot(x_test,y_test, 'r.');
 
-% Description:
-% genLinData generates a vector of n values between -2 and 1. Noise of
-% amplitude sigma is added to each entry's value Y, which is the linear
-% function -0.7*X + 1.
-
 %% Section 2
 
 % concatenating 1 to each training point
