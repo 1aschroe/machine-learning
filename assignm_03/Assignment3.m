@@ -1,17 +1,25 @@
 %% Exercise 1
-
+% Number of runs to determine the average error for one simga.
 n=10;
 
-%% Section 1-7
+%% Section 1
+% Description:
+% genLinData generates a vector of n values between -2 and 1. Noise of
+% amplitude sigma is added to each entry's value Y, which is the linear
+% function -0.7*X + 1.
 
+%% Section 2-7
+% Create a vector with sigmas
 sigmas = [0.01 0.1 0.4 0.9 1];
+% Initialize the error result vector with 0 
 err_for_sigma = zeros(length(sigmas), 1);
 for sigma = sigmas
+    % insert for each seigma the corresponding average error value
     err_for_sigma(sigmas==sigma) = findAverageError(sigma, n, false);
 end
 
+% Plot the average errors with respect to the sima value 
 figure;
-
 plot(sigmas, err_for_sigma, 'b.-');
 
 

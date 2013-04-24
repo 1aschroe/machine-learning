@@ -1,6 +1,7 @@
 function [ mean_err ] = findAverageError( sigma, n, outlier )
-%FINDAVERAGEERROR Summary of this function goes here
-%   Detailed explanation goes here
+%FINDAVERAGEERROR For n testruns, the average error of the created LLS
+%function (performed in 'doExercise1' is calculated and returned.
+%Optional outlier are inserted when passing 'outlier'=true
 
 figure; clf;
 
@@ -16,6 +17,7 @@ for it=1:n
     end
     err(it) = doExercise1(outlier, x_train, y_train, x_test, y_test);
 end
+% Calculate the mean error of all 'n' runs.
 mean_err = mean(err);
 end
 

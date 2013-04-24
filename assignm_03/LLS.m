@@ -1,6 +1,6 @@
 function [ w ] = LLS( x, y )
-%LLS Summary of this function goes here
-%   Detailed explanation goes here
+%As given in the Exercise lecture, this function computes the output w of
+%given input matrices x and y.
 
 w = (x'*x)\(x'*y);
 
