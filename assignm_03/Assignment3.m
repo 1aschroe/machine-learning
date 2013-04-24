@@ -36,6 +36,8 @@ plot(sigmas, err_for_sigma_2, 'b.-');
 
 %% Exercise 2
 
+profile on;
+
 clear all;
 
 load('dataRidge.mat');
@@ -100,3 +102,10 @@ end
 
 figure
 plot(l_exp, err);
+
+%% Exercise 3
+
+profile off;
+
+p = profile('info');
+profview(0,p)
