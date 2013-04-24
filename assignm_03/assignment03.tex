@@ -47,8 +47,16 @@ While the linear least square method (LLS) uses a average computation time of ab
 \section*{Exercise 4}
 
 \subsection*{Question}
-Prove the least squares loss function $\| Y-X \omega \|^2$ is a convex function of $\omega$.
+Prove the least squares loss function $\| Y-X w \|^2$ is a convex function of $w$.
 
 \subsection*{Answer}
+
+\begin{align*}
+  \| Y-X (tw_1 + (1-t)w_2) \|^2 =& \langle Y-X (tw_1 + (1-t)w_2), Y-X (tw_1 + (1-t)w_2) \rangle \\
+  =& \langle t(Y-X w_1) + (1-t)(Y-X w_2), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle \\
+  =& \langle t(Y-X w_1), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle + \langle (1-t)(Y-X w_2), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle \\
+  =& \langle t(Y-X w_1), t(Y-X w_1) \rangle + \langle t(Y-X w_1), (1-t)(Y-X w_2) \rangle + \langle (1-t)(Y-X w_2), t(Y-X w_1) \rangle + \langle (1-t)(Y-X w_2), (1-t)(Y-X w_2) \rangle \\
+  =& t^2\langle Y-X w_1, Y-X w_1 \rangle + 2 t (1-t)\langle Y-X w_1, Y-X w_2 \rangle + (1-t)^2\langle Y-X w_2, Y-X w_2 \rangle 
+\end{align*}
 
 \end{document}
