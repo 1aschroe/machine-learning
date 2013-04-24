@@ -1,0 +1,54 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent-Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃ¼rlich unterstÃ¼tzt ;-)
+% parskip        Absatzabstand anstatt EinzÃ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. âmacceâ anstatt âutf8â.
+ 
+\usepackage{textcomp}       % ZusÃ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{listings}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 02}
+\author{Arne Schr�der \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+ 
+\section*{Exercise 1 and 2}
+See Matlab files.
+
+\section*{Exercise 3}
+Compare computation time of the least square regression and ridge regression.
+
+\subsection*{Answer 3}
+While the linear least square method (LLS) uses a average computation time of about 0.2 millisec, the ridge regression algorithm (RidgeLLS) takes nearly twice the time (an average of 0.4 msec).
+ 
+
+\section*{Exercise 4}
+
+\subsection*{Question}
+Prove the least squares loss function $\| Y-X \omega \|^2$ is a convex function of $\omega$.
+
+\subsection*{Answer}
+
+\end{document}

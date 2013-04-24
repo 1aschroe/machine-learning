@@ -1,6 +1,8 @@
+Thumbs.db
 *.m~
 *.m~~
 *.asv
 *.log
 *.aux
+.DS_Store
 *.synctex.gz
