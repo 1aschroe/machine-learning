@@ -60,3 +60,35 @@ plot(xx, yy);
 
 % The class of functions that can be learned are polynomials up to degree
 % 15.
+
+%% Section 5
+% see Ridge LLS
+
+%% Section 6
+clf; hold on;
+
+plot(x_train, y_train, 'x');
+
+doRidge(x_train, y_train, x_test, y_test, 0.0001, 'g');
+doRidge(x_train, y_train, x_test, y_test, 0.1, 'r');
+doRidge(x_train, y_train, x_test, y_test, 10, 'k');
+
+%% Section 7
+
+clf; hold on;
+
+plot(x_train, y_train, 'x');
+plot(x_test, y_test, 'o');
+
+l_exp = -15:1;
+err=zeros(length(l_exp), 1);
+
+for it=1:length(l_exp);
+    c = (it - 1)/length(l_exp);
+    color = [c 0 1-c];
+    % lambda runs from blue (small) to red (big)
+    err(it) = doRidge(x_train, y_train, x_test, y_test, 2^l_exp(it), color);
+end
+
+figure
+plot(l_exp, err);
