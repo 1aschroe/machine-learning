@@ -4,5 +4,7 @@ Thumbs.db
 *.asv
 *.log
 *.aux
+*.bbl
+*.blg
 .DS_Store
 *.synctex.gz

@@ -51,15 +51,28 @@ Prove the least squares loss function $\| Y-X w \|^2$ is a convex function of $w
 
 \subsection*{Answer}
 
+We first show that (*)$\langle a,a\rangle + \langle b,b\rangle \geq 2 \cdot \langle a,b\rangle$: This is equivalent to $\langle a,a\rangle + \langle b,b\rangle - 2 \cdot \langle a,b\rangle \geq 0$
+\begin{align*}
+\langle a,a\rangle + \langle b,b\rangle - 2 \cdot \langle a,b\rangle &= \langle a,a\rangle + \langle b,b\rangle - \langle a,b\rangle - \langle a,b\rangle \\
+&= \langle a,a-b\rangle + \langle b-a,b\rangle \\
+&= \langle a,a-b\rangle - \langle a-b,b\rangle \\
+&= \langle a,a-b\rangle - \langle b,a-b\rangle \\
+&= \langle a-b,a-b\rangle = \|a-b\| \geq 0
+\end{align*}
+
 \begin{align*}
   &\| Y-X (tw_1 + (1-t)w_2) \|^2  \\
   =& \langle Y-X (tw_1 + (1-t)w_2), Y-X (tw_1 + (1-t)w_2) \rangle \\
   =& \langle t(Y-X w_1) + (1-t)(Y-X w_2), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle \\
-  =& \langle t(Y-X w_1), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle + \langle (1-t)(Y-X w_2), t(Y-X w_1) \; + \\
-  & (1-t)(Y-X w_2) \rangle \\
-  =& \langle t(Y-X w_1), t(Y-X w_1) \rangle + \langle t(Y-X w_1), (1-t)(Y-X w_2) \rangle \; + \\
-  & \langle (1-t)(Y-X w_2), t(Y-X w_1) \rangle + \langle (1-t)(Y-X w_2), (1-t)(Y-X w_2) \rangle \\
-  =& t^2\langle Y-X w_1, Y-X w_1 \rangle + 2 t (1-t)\langle Y-X w_1, Y-X w_2 \rangle + (1-t)^2\langle Y-X w_2, Y-X w_2 \rangle 
+  =& \langle t(Y-X w_1), t(Y-X w_1) + (1-t)(Y-X w_2) \rangle \\
+  &+ \langle (1-t)(Y-X w_2), t(Y-X w_1) \; + (1-t)(Y-X w_2) \rangle \\
+  =& \langle t(Y-X w_1), t(Y-X w_1) \rangle + \langle t(Y-X w_1), (1-t)(Y-X w_2) \rangle \; \\
+  &+ \langle (1-t)(Y-X w_2), t(Y-X w_1) \rangle + \langle (1-t)(Y-X w_2), (1-t)(Y-X w_2) \rangle \\
+  =& t^2\langle Y-X w_1, Y-X w_1 \rangle + 2 t (1-t)\langle Y-X w_1, Y-X w_2 \rangle + (1-t)^2\langle Y-X w_2, Y-X w_2 \rangle \\
+ (*)  \leq& t^2\langle Y-X w_1, Y-X w_1 \rangle + t (1-t)\langle Y-X w_1, Y-X w_1 \rangle \\
+ &+ t (1-t)\langle Y-X w_2, Y-X w_2 \rangle + (1-t)^2\langle Y-X w_2, Y-X w_2 \rangle \\
+ =& t\langle Y-X w_1, Y-X w_1 \rangle + (1-t)\langle Y-X w_2, Y-X w_2 \rangle \\
+ =& t \|Y-X w_1 \| + (1-t) \|Y-X w_1 \|
 \end{align*}
 
 \end{document}
