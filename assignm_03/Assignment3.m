@@ -1,6 +1,6 @@
 %% Exercise 1
 % Number of runs to determine the average error for one simga.
-n=10;
+n=1;
 
 %% Section 1
 % Description:
@@ -14,11 +14,11 @@ sigmas = [0.01 0.1 0.4 0.9 1];
 % Initialize the error result vector with 0 
 err_for_sigma = zeros(length(sigmas), 1);
 for sigma = sigmas
-    % insert for each seigma the corresponding average error value
+    % insert for each sigma the corresponding average error value
     err_for_sigma(sigmas==sigma) = findAverageError(sigma, n, false);
 end
 
-% Plot the average errors with respect to the sima value 
+% Plot the average errors with respect to the sigma value 
 figure;
 plot(sigmas, err_for_sigma, 'b.-');
 
