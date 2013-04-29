@@ -42,6 +42,10 @@ Compare computation time of the least square regression and ridge regression.
 
 \subsection*{Answer 3}
 While the linear least square method (LLS) uses a average computation time of about 0.2 millisec, the ridge regression algorithm (RidgeLLS) takes nearly twice the time (an average of 0.4 msec).
+
+kNN: = O(kn), sort: O(n log n) ; keep all points for prediction
+
+LLS: we just need <w,x>
  
 
 \section*{Exercise 4}
@@ -50,6 +54,8 @@ While the linear least square method (LLS) uses a average computation time of ab
 Prove the least squares loss function $\| Y-X w \|^2$ is a convex function of $w$.
 
 \subsection*{Answer}
+note: second derivative of $J=(Y-Xw)^2$ must be $\geq$ 0
+
 
 We first show that (*)$\langle a,a\rangle + \langle b,b\rangle \geq 2 \cdot \langle a,b\rangle$: This is equivalent to $\langle a,a\rangle + \langle b,b\rangle - 2 \cdot \langle a,b\rangle \geq 0$
 \begin{align*}
