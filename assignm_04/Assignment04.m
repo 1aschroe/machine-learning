@@ -97,8 +97,16 @@ pred_labels = zeros(length(x_test), 1);
 % for each row find the maximum absolute value and put it into the
 % predtiction data
 for it=1:length(x_test)
-    [val_pos, max_pos] = max(abs(weights(it, :)));
-    pred_labels(it) = max_pos;
+    % find absolute max value
+    [val_pos, max_pos] = max(weights(it, :));
+    [val_neg, max_neg] = max(weights(it, :)*-1);
+    if(val_pos > val_neg)
+        % reference first class if max value was positive (classA)
+        pred_labels(it) = classRef(max_pos, 1);
+    else
+        % reference second class if max value was negative (classB)
+        pred_labels(it) = classRef(max_neg, 2);
+    end
 end
 
 one_vs_one = loss01(pred_labels, y_test)
