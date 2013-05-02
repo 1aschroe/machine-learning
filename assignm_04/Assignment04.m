@@ -84,9 +84,9 @@ clsX = ClassificationDiscriminant.fit(x_train, y_train);
 % Our weights are stored in a 400x6 matrix, where each column represents a 
 % unique pair of classes:
 classRef = [1 2; 1 3; 1 4; 2 3; 2 4; 3 4];
-weights = zeros(length(x_test), 6);
 
 % iterate over class combinations and generate weights
+weights = zeros(length(x_test), 6);
 for it=1:length(classRef)
     classA = classRef(it, 1);
     classB = classRef(it, 2);
@@ -95,7 +95,7 @@ end
 
 pred_labels = zeros(length(x_test), 1);
 % for each row find the maximum absolute value and put it into the
-% predtiction data
+% prediction data
 for it=1:length(x_test)
     % find absolute max value
     [val_pos, max_pos] = max(weights(it, :));
@@ -109,4 +109,5 @@ for it=1:length(x_test)
     end
 end
 
+% Compare the predicted labels with the reference labels to generate loss
 one_vs_one = loss01(pred_labels, y_test)
