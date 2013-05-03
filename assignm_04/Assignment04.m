@@ -83,7 +83,13 @@ clsX = ClassificationDiscriminant.fit(x_train, y_train);
 
 % Our weights are stored in a 400x6 matrix, where each column represents a 
 % unique pair of classes:
-classRef = [1 2; 1 3; 1 4; 2 3; 2 4; 3 4];
+% classRef = [1 2; 1 3; 1 4; 2 3; 2 4; 3 4];
+% The cartesian product of 1:4 with itself (1:4 x 1:4)
+[x, y] = meshgrid(1:4);
+cartesian = [x(:) y(:)];
+% From this we select only those entrys where the first component is
+% smaller than the second one
+classRef = cartesian(cartesian(:,1) < cartesian(:,2),:);
 
 % iterate over class combinations and generate weights
 weights = zeros(length(x_test), length(classRef));
