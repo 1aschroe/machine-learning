@@ -111,3 +111,44 @@ end
 
 % Compare the predicted labels with the reference labels to generate loss
 err_one_vs_one = loss01(pred_labels, y_test)
+
+%% Exercise 5
+
+load('dataRidge.mat');
+
+clf; hold on;
+
+plot(x_train, y_train, 'x');
+plot(x_test, y_test, 'o');
+
+l_exp = -15:8;
+err=zeros(length(l_exp), 1);
+
+n = 20;
+cv = cvpartition(n,'kfold',10);
+
+for it = 1:cv.NumTestSets
+    train_index = cv.training(it);
+    test_index = cv.test(it);
+end
+
+
+for it=1:length(l_exp);
+    c = (it - 1)/length(l_exp);
+    color = [c 0 1-c];
+    % lambda runs from blue (small) to red (big)
+    err(it) = doRidge(x_train, y_train, x_test, y_test, 2^l_exp(it), color);
+end
+
+figure
+plot(l_exp, err);
+
+%%
+
+clf; hold on;
+
+plot(x_train, y_train, 'x');
+
+doRidge(x_train, y_train, x_test, y_test, 0.0001, 'g');
+doRidge(x_train, y_train, x_test, y_test, 0.1, 'r');
+doRidge(x_train, y_train, x_test, y_test, 10, 'k');
