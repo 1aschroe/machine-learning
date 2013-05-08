@@ -1,0 +1,58 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+
+ 
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} 
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 03}
+\author{Arne Schröder \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+ 
+\section*{Exercise 1}
+Write the following linear program in the standard
+form by determining \textbf{A,b,c}.
+
+Substitute $x_3$ with $x_3' = -x_3$.\\
+minimize $x_1 -2x_2 -4x_3'$ \\
+subject to\\
+$-x_1+x_2 \geq 1$ \\
+$3x1 - 2x_3' \leq -1$ \\
+$-2x_1 + 5x_3' +4 \leq 0$\\
+and\\
+$x_1,x_2,x_3' \leq 0$\\ \\
+\textbf{Standard form:}\\ \\
+minimize $c^Tx$ \\
+subject to $Ax \leq b$ \\
+and $x \leq 0$ \\
+with 
+$
+A=
+\begin{bmatrix}
+-1 & 1 & 0 \\
+3 & 0 & -2 \\
+-2 & 0 & 5 \\
+\end{bmatrix}
+b=
+\begin{bmatrix}
+1 \\
+-1 \\
+4 \\
+\end{bmatrix}
+c=
+\begin{bmatrix}
+1 \\
+-2 \\
+-4 \\
+\end{bmatrix}
+$  
+
+\end{document}
