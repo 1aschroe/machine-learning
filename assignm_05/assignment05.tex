@@ -48,7 +48,7 @@ Substitute $x_3$ with $x_3' = -x_3$:
   -x_1+x_2 &\geq 1 \\
   3x1 - 2x_3' &\leq -1 \\
   -2x_1 + 5x_3' +4 &\leq 0\\
-  x_1,x_2,x_3' &\leq 0\\ \\
+  x_1,x_2,x_3' &\leq 0
 \end{align*}
 \textbf{Standard form:}\\ \\
 Minimize $c^Tx$ \\
@@ -80,12 +80,26 @@ c=
 
 \subsection*{Task}
 
-For any $\gamma > 0$ the solution of $\min_{w, b} \frac{1}{2} \|w\|^2$, subject to $y_i \cdot (\langle w, x_i \rangle -b) \geq 1$ is the same as the same one subject to $y_i \cdot (\langle w, x_i \rangle - b) \geq \gamma$.
+For any $\gamma > 0$ the hyperplane defined by the solution $(w, b)$ to \textbf{(I)} $\min\limits_{w, b} \frac{1}{2} \|w\|^2$, subject to $y_i \cdot (\langle w, x_i \rangle -b) \geq 1$, is the same as the hyperplane defined by the solution $(w', b')$ defined by \textbf{(II)} $\min\limits_{w', b'} \frac{1}{2} \|w'\|^2$, subject to $y_i \cdot (\langle w', x_i \rangle - b') \geq \gamma$.
 
 \subsection*{Answer}
+
+For $\gamma' > 0$, minimizing $\frac{1}{2} \|w\|^2$ is equivalent to minimizing $\gamma' \cdot \frac{1}{2} \|w\|^2$. This especially applies for $\gamma' = \frac{1}{2} \gamma^{-2}$.
+
+Given the problem \textbf{(II)} we know that
 \begin{align*}
-  & y_i \cdot (\langle w, x_i \rangle - b) \geq \gamma \\
-  \Leftrightarrow & \gamma^{-1} \cdot y_i \cdot (\langle w, x_i \rangle - b) \geq 1 \\
-  \Leftrightarrow & \gamma^{-1} \cdot y_i \cdot (\langle w, x_i \rangle - b) \geq 1 \\
+  & y_i \cdot (\langle w', x_i \rangle - b) \geq \gamma \\
+  \Leftrightarrow & \gamma^{-1} \cdot y_i \cdot (\langle w', x_i \rangle - b') \geq 1 \\
+  \Leftrightarrow & y_i \cdot (\langle \gamma^{-1} \cdot w', x_i \rangle - \gamma^{-1} \cdot b') \geq 1.
 \end{align*}
+
+We also can see that $\frac{1}{2} \|\gamma^{-1} \cdot w \|^2 = \frac{1}{2} \gamma^{-1} \cdot \frac{1}{2} \| w \|^2$. And using the assumption made at the beginning, we can conclude that \textbf{(II)} can be solved by the solution $(\gamma \cdot w, \gamma \cdot b)$.
+
+Now we need to show that the two hyperplanes $H, H'$ defined by $(w, b)$ and $(\gamma \cdot w, \gamma \cdot b)$ coincide. Given a point $x \in H$ we know that 
+\begin{align*}
+\langle w, x \rangle + b &= 0 \\
+\Leftrightarrow \langle \gamma \cdot w, x \rangle + \gamma \cdot b = \gamma \cdot (\langle w, x \rangle + b) &= \gamma \cdot 0 = 0.
+\end{align*}
+
+This means that also $x \in H'$ and because $x$ was arbitrary $H \subset H'$. And because the last implication is an equivalence, we know that $H = H'$.
 \end{document}
