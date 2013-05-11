@@ -76,6 +76,52 @@ c=
 \end{bmatrix}
 \]
 
+\section*{Exercise 2}
+
+\subsection*{Task 1}
+
+Find the derivative of the Lagrangian with respect to the vector x and set it to zero ($\nabla_xL(x,\lambda_1,\lambda_2) = 0$). Solve it with respect to $\lambda_2$.
+
+\subsection*{Solution}
+
+\begin{align*}
+  \nabla_xL(x,\lambda_1,\lambda_2) = c^T + \lambda_1^T A + \lambda_2^T & = 0 \\
+  \Leftrightarrow c + A \lambda_1 + \lambda_2 & = 0 \\
+  \Leftrightarrow \lambda_2 = -c -A\lambda_1
+\end{align*}
+
+\subsection*{Task 2}
+
+Replace $\lambda_2$ from part 1 in $L(x, \lambda_1, \lambda_2)$ and simplify it.
+
+\subsection*{Solution}
+
+\begin{align*}
+  L(x,\lambda_1,\lambda_2) &= c^Tx + \lambda_1^T(Ax - b) + \lambda_2^Tx \\
+  &= c^Tx + \lambda_1^T(Ax - b) + (-c -A\lambda_1)^Tx \\
+  &= c^Tx + \lambda_1^T(Ax - b) - c^Tx - \lambda_1^TA^Tx \\
+  &= \lambda_1^T((A-A^T)x - b)
+\end{align*}
+
+\section*{Exercise 3}
+
+\subsection*{Task}
+
+Derive the dual problem of the hard margin SVM.
+
+\subsection*{Solution}
+
+\begin{align*}
+  f_0(w, b) & = \frac{1}{2} \| w \|^2 \\
+  f_i(w, b) & = 1 - y_i(w^T x_i - b) \\
+  & \\
+  \Rightarrow L(w, b, \lambda) & = \frac{1}{2} \| w \|^2 + \sum_{i=1}^{m} \lambda_i \cdot (1 - y_i(w^T x_i - b))
+\end{align*}
+
+We now define $g(\lambda) := \inf \limits_{(w,b)} L(w, b, \lambda)$, which gives us the dual problem
+
+%TODO
+
 \section*{Exercise 4}
 
 \subsection*{Task}
