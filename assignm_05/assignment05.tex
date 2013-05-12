@@ -37,36 +37,35 @@
  \section*{Exercise 1}
  
  \subsection*{Task}
-Write the following linear program in the standard form by determining \textbf{A, b, c}.
+Write the given linear program in the standard form by determining \textbf{A, b, c}.
 \subsection*{Answer}
 
 Substitute $x_3$ with $x_3' = -x_3$:
 
 \begin{align*}
-  \text{Minimize} \quad& x_1 -2x_2 -4x_3' \\
-  \text{subject to}&\\
-  -x_1+x_2 &\geq 1 \\
-  3x1 - 2x_3' &\leq -1 \\
-  -2x_1 + 5x_3' +4 &\leq 0\\
+  \text{Minimize} \quad x_1 -2x_2 &-4x_3' \\
+  \text{subject to} \quad x_1 - x_2 &\leq -1 \\
+  3x_1 - 2x_3' &\leq -1 \\
+  -2x_1 + 5x_3' &\leq -4\\
   x_1,x_2,x_3' &\leq 0
 \end{align*}
 \textbf{Standard form:}\\ \\
 Minimize $c^Tx$ \\
 subject to $Ax \leq b$ \\
-and $x \leq 0$ \\
+and $x \leq 0$ \\\\
 with 
 \[
 A=
 \begin{bmatrix}
--1 & 1 & 0 \\
+1 & -1 & 0 \\
 3 & 0 & -2 \\
 -2 & 0 & 5 \\
 \end{bmatrix},
 b=
 \begin{bmatrix}
-1 \\
 -1 \\
-4 \\
+-1 \\
+-4 \\
 \end{bmatrix},
 c=
 \begin{bmatrix}
