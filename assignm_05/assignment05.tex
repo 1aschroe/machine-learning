@@ -40,7 +40,7 @@
 Write the given linear program in the standard form by determining \textbf{A, b, c}.
 \subsection*{Answer}
 
-Substitute $x_3$ with $x_3' = -x_3$:
+Substitute $x_3$ with $x_3' = -x_3$, invert the first equation and subtracting 4 from the third equation
 
 \begin{align*}
   \text{Minimize} \quad x_1 -2x_2 &-4x_3' \\
@@ -129,7 +129,7 @@ For any $\gamma > 0$ the hyperplane defined by the solution $(w, b)$ to \textbf{
 
 \subsection*{Answer}
 
-For $\gamma' > 0$, minimizing $\frac{1}{2} \|w\|^2$ is equivalent to minimizing $\gamma' \cdot \frac{1}{2} \|w\|^2$. This especially applies for $\gamma' = \frac{1}{2} \gamma^{-1}$.
+For $\gamma' > 0$, minimizing $\frac{1}{2} \|w\|^2$ is equivalent to minimizing $\gamma' \cdot \frac{1}{2} \|w\|^2$. This especially applies for $\gamma' = \frac{1}{2} \gamma^{-2}$.
 
 Given the problem \textbf{(II)} we know that
 \begin{align*}
@@ -138,7 +138,7 @@ Given the problem \textbf{(II)} we know that
   \Leftrightarrow & y_i \cdot (\langle \gamma^{-1} \cdot w', x_i \rangle - \gamma^{-1} \cdot b') \geq 1.
 \end{align*}
 
-We also can see that $\frac{1}{2} \|\gamma^{-1} \cdot w \|^2 = \frac{1}{2} \gamma^{-1} \cdot \frac{1}{2} \| w \|^2$. And using the assumption made at the beginning, we can conclude that \textbf{(II)} can be solved by the solution $(\gamma \cdot w, \gamma \cdot b)$.
+We also can see that $\frac{1}{2} \|\gamma^{-1} \cdot w \|^2 = \frac{1}{2} \gamma^{-2} \cdot \frac{1}{2} \| w \|^2$. And using the assumption made at the beginning, we can conclude that \textbf{(II)} can be solved by the solution $(\gamma \cdot w, \gamma \cdot b)$.
 
 Now we need to show that the two hyperplanes $H, H'$ defined by $(w, b)$ and $(\gamma \cdot w, \gamma \cdot b)$ coincide. Given a point $x \in H$ we know that 
 \begin{align*}
