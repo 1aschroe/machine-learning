@@ -1,0 +1,42 @@
+<project name="HandIn" default="hand.in" basedir=".">
+	<description>
+		Hand in the assignment for machine learning
+	</description>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml" />
+	<property environment="env" />
+	<property name="mail.smtp" value="smtp.gmail.com" />
+	<property name="mail.user" value="name.nachname@gmail.com" />
+	<property name="mail.passwd" value="passwort" />
+	<property name="assignment.no" value="06" />
+	<property name="ass.dir" value="assignm_${assignment.no}" />
+
+	<target name="hand.in">
+		<exec executable="git" failonerror="true">
+			<arg value="pull" />
+		</exec>
+		<exec executable="pdflatex" failonerror="true">
+			<arg value="${ass.dir}/assignment${assignment.no}.tex" />
+			<arg value="-output-directory=${ass.dir}" />
+		</exec>
+		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
+		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
+		<!-- TODO: change recipiant when done -->
+		<mail
+		    tolist="Arne.Schroeder@classix.de"
+		    from="${mail.user}"
+		    subject="ML - Asignment ${assignment.no}"
+		    mailhost="smtp.gmail.com"
+		    mailport="465"
+		    ssl="true"
+		    user="${mail.user}"
+		    password="${mail.passwd}">
+		    <message>Hello Morteza,
+
+	            attached our solution.
+
+	            Regards,
+	            Arne, Falk, Angel</message>
+		</mail>
+	</target>
+</project>
