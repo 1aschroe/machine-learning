@@ -27,13 +27,13 @@
  \section*{Exercise 2}
     Figure 2 a is most likely to be a Gaussian kernel (rbf) with parameters $\beta = 10$.
 	
-	One could argue, that this scenario is already over-fitting as a linear kernel would only lead to two false positives but a much simpler solution. On the other hand, the Gaussian kernel does classify every point correctly and provides a not too complex function. A change in parameters is not essentially necessary.
+	One could argue, that this scenario is already overfitting as a linear kernel would only lead to two false positives but a much simpler solution. On the other hand, the Gaussian kernel does classify every point correctly and provides a not too complex function. A change in parameters is not essentially neccesary.
 	
 	Figure 2 b is most likely to be a polynomial kernel with parameter $c = 10$.
 	
 	The chosen scenario does not separate the classes correctly. Points, which are most definitely no outliers (as they lie in groups) are classified wrong. The situation can be made better by raising $c$ to 100 and the degree $d$ to 3.
 	
-	We guess that almost all points are support vectors. Maybe some of the points in between other points of the same class are not.
+	We guess that almost all points are support vectors. Maybe some of the points inbetween other points of the same class are not.
 	
 \section*{Exercise 4}
 Assume that $K1;K2 : \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R} $ are kernel functions. Which of the following functions are also a valid kernel? Prove or bring a counterexample.
@@ -47,12 +47,36 @@ For the general kernel function we insert $\alpha K_1$ and move $\alpha$ in fron
 As $\alpha \geq 0$ and $K_1 \geq 0$, is K a valid kernel.
 
 \subsection*{b) $K = K_1 + K_2$}
+We want to show that $\sum_{i,j=1}^n c_i c_j K(x_i,x_j) \geq 0$:
+\begin{align*}
+\sum_{i,j=1}^n c_i c_j K(x_i,x_j) &= \sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) + K_2(x_i,x_j))\\
+&=  \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) + \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0
+\end{align*}
+
 As $K_1$ and $K_2$ are valid kernels, 
 $ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) \geq 0 $ and $ \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0 $ holds.
-With  
+
+\subsection*{c) $K = K_1 - K_2$}
+We want to show that $\sum_{i,j=1}^n c_i c_j K(x_i,x_j) < 0$
+
+We choose 
 \begin{align*}
- \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) + \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) &= \underbrace{\sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) + K_2(x_i,x_j))}_{\geq 0} \\
- &= \underbrace{\sum_{i,j=1}^n c_i c_j K(x_i,x_j)}_{\geq 0}
+& K_1:(x,y) \mapsto \langle x,y \rangle \\
+& K_2 = 2 \cdot K_1
+\end{align*}
+
+With 
+\begin{align*}
+\sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) - \sum_{i,j=1}^n c_i c_j K_2 (x_i,x_j) &= \sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) - K_2(x_i, x_j))\\
+&= \sum_{i,j=1}^n c_i c_j -K_1(x_i,x_j)\\
+&= - \underbrace{\sum_{i,j=1}^n c_i c_j K_1(x_i,x_j)}_{\geq 0}\\
+\end{align*}
+We have to show that for one $n,x,c$ the expression $-\sum_{i,j=1}^n c_i c_j K_1(x_i,x_j)$ can be negative.
+
+We choose  $ \mathcal{X}=\mathbb{R}, n=1, x_1=1, c_1=1$:
+\begin{align*}
+-\sum_{i,j=1}^1 c_i c_j K_1(x_i,x_j) &= - c_1^2 \cdot  K_1(x_i,x_j)\\
+&= - 1 \cdot 1 < 0
 \end{align*}
 
 
