@@ -1,25 +1,11 @@
 \documentclass[fontsize=12pt,a4paper]{scrartcl}
  
-% Das Prozent-Zeichen leitet einen Kommentar ein,
-% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+\usepackage[T1]{fontenc}    
+\usepackage[latin1]{inputenc} 
  
-% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
-% a4paper        Papierformat ist hier A4
-% landscape      Querformat wird natÃ¼rlich unterstÃ¼tzt ;-)
-% parskip        Absatzabstand anstatt EinzÃ¼ge
-% draft          Der Entwurfsmodus deckt SchwÃ¤chen auf
-% {scrartcl}     Die Dokumentenklasse book, report, article
-%                oder fÃ¼rs deutsche scrbook, scrreprt, scrartcl
- 
-%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
-\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
-\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
-                            % Wenn Sie an einem Mac sitzen,verwenden
-                            % Sie ggf. âmacceâ anstatt âutf8â.
- 
-\usepackage{textcomp}       % ZusÃ¤tzliche Symbolzeichen
-\usepackage{siunitx}
+\usepackage{textcomp} 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{listings}
 \lstset{tabsize=4, showspaces=false}
 
@@ -28,11 +14,10 @@
 \subtitle{Ulrike von Luxburg \\ Assignment 06}
 \author{Arne Schr�der \and Falk Oswald \and Angel Bakardzhiev}
  
-\date{\today}               % \today setzt das heutige Datum
+\date{\today} 
  
 \begin{document}
-\maketitle                  % Titelei erzeugen
-% \tableofcontents            % Inhaltsverzeichnis anlegen
+\maketitle                  
 
  \section*{Exercise 1}
 	Best parameter for example with noise is $c=1$.
@@ -49,4 +34,25 @@
 	The chosen scenario does not separate the classes correctly. Points, which are most definitely no outliers (as they lie in groups) are classified wrong. The situation can be made better by raising $c$ to 100 and the degree $d$ to 3.
 	
 	We guess that almost all points are support vectors. Maybe some of the points in between other points of the same class are not.
+	
+\section*{Exercise 4}
+Assume that $K1;K2 : \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R} $ are kernel functions. Which of the following functions are also a valid kernel? Prove or bring a counterexample.
+
+A kernel function is defined as:\\
+\[ \sum_{i,j=1}^n c_i c_j k(x_i,x_j) \geq 0  \] 
+with $ x_i \in \mathcal{X}$, $c_1,...,c_n \in \mathbb{R}$, $n\geq 1$
+\subsection*{a) $K = \alpha K_1 \ for \ \alpha \geq 0$ }
+For the general kernel function we insert $\alpha K_1$ and move $\alpha$ in front of the sum.
+\[\sum_{i,j=1}^n c_i c_j \alpha K_1(x_i,x_j) = \alpha \underbrace{\sum_{i,j=1}^n c_i c_j K_1(x_i,x_j)}_{\geq 0}   \]
+As $\alpha \geq 0$ and $K_1 \geq 0$, is K a valid kernel.
+
+\subsection*{b) $K = K_1 + K_2$}
+As $K_1$ and $K_2$ are valid kernels, 
+$ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) \geq 0 $ and $ \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0 $
+holds.\\
+With  
+\[ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) + \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) = \sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) + K_2(x_i,x_j)) \geq 0 \]
+
+
+\section{Exercise 5}}
  \end{document}
