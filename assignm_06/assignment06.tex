@@ -17,7 +17,7 @@
 \date{\today} 
  
 \begin{document}
-\maketitle                  
+\maketitle
 
  \section*{Exercise 1}
 	Best parameter for example with noise is $c=1$.
@@ -35,6 +35,27 @@
 	
 	We guess that almost all points are support vectors. Maybe some of the points inbetween other points of the same class are not.
 	
+\section*{Exercise 3}
+
+\subsection*{Task}
+Write the primal and dual of SVM in matrix form.
+
+\subsection*{Solution}
+
+Soft margin linear SVM: Primal:
+
+\begin{align*}
+\min_{w, \xi b} \quad \frac{1}{2} w^T \cdot w + \frac{C}{n} \xi^T \cdot \mathbb{1}_n \\
+y_i(w^T x_i + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
+\xi_i \geq 0 \quad i = 1, \dots, n
+\end{align*}
+
+Dual:
+
+\begin{align*}
+\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T 
+\end{align*}
+
 \section*{Exercise 4}
 Assume that $K1;K2 : \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R} $ are kernel functions. Which of the following functions are also a valid kernel? Prove or bring a counterexample.
 
