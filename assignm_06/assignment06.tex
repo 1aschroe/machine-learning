@@ -81,4 +81,25 @@ We choose  $ \mathcal{X}=\mathbb{R}, n=1, x_1=1, c_1=1$:
 
 
 \section{Exercise 5}
+
+\subsection*{Task 1}
+
+Show that the corresponding feature map $\Phi$ is given by $\Phi(x) = (1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, x_2^2, \sqrt{2} x_1 x_2)^T$.
+
+\subsection*{Solution}
+
+\begin{align*}
+  \langle \Phi(x), \Phi(y) \rangle & = \langle (1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, x_2^2, \sqrt{2} x_1 x_2)^T, (1, \sqrt{2} y_1, \sqrt{2} y_2, y_1^2, y_2^2, \sqrt{2} y_1 y_2)^T \rangle \\
+  & = (1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, x_2^2, \sqrt{2} x_1 x_2) \cdot (1, \sqrt{2} y_1, \sqrt{2} y_2, y_1^2, y_2^2, \sqrt{2} y_1 y_2)^T \\
+  & = 1 + 2 x_1 y_1 + 2 x_2 y_2 + x_1^2 y_1^2 + x_2^2 y_2^2 + 2 x_1 y_1 x_2 y_2 \\
+  & = (x_1 y_1 + x_2 y_2 + 1)^2 = (x^T y + 1)^2 = K(x, y)
+\end{align*}
+
+\subsection*{Question}
+
+If we use the second degree polynomial kernel for inputs from $\mathbb{R}^d$, what would be the dimensionality of the corresponding feature space?
+
+\subsection*{Answer}
+
+For $x, y \in \mathbb{R}^d$ the product $x^T y$ results in a sum of $d$ terms. Therefore $(x^T y + 1)$ results in a sum of $d + 1$ terms. This means that for the square there are going to be $\frac{(d+1)(d+2)}{2}$ terms, which will all need to be represented in the feature space. Therefore, the feature space is going to be of dimension $\frac{(d+1)(d+2)}{2}$.
  \end{document}
