@@ -48,11 +48,14 @@ As $\alpha \geq 0$ and $K_1 \geq 0$, is K a valid kernel.
 
 \subsection*{b) $K = K_1 + K_2$}
 As $K_1$ and $K_2$ are valid kernels, 
-$ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) \geq 0 $ and $ \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0 $
-holds.\\
+$ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) \geq 0 $ and $ \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0 $ holds.
 With  
-\[ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) + \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) = \sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) + K_2(x_i,x_j)) \geq 0 \]
+\begin{align*}
+ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) + \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) &= \underbrace{\sum_{i,j=1}^n c_i c_j (K_1(x_i,x_j) + K_2(x_i,x_j))}_{\geq 0} \\
+ &= \underbrace{\sum_{i,j=1}^n c_i c_j K(x_i,x_j)}_{\geq 0}
+\end{align*}
 
 
-\section{Exercise 5}}
+
+\section{Exercise 5}
  \end{document}
