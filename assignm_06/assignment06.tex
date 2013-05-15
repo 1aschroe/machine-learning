@@ -100,8 +100,18 @@ We choose  $ \mathcal{X}=\mathbb{R}, n=1, x_1=1, c_1=1$:
 &= - 1 \cdot 1 < 0
 \end{align*}
 
+\subsection*{e) $K(x,y) = f(x)K_1(x,y)f(y) $ for any function $f:\mathcal{X} \rightarrow \mathbb{R}$ }
 
 \section{Exercise 5}
+We want to show that $ \sum_{i,j=1}^n c_i c_j K(x_i,x_j) \geq 0$.\\
+With $K(x,y):=f(x)K_1(x,y)f(y)$ we have 
+\begin{align*}
+\sum_{i,j=1}^n c_i c_j K(x_i,x_j) &= \sum_{i,j=1}^n c_i c_j f(x_i)K_1(x_i,x_j)f(x_i) \\
+&= \sum_{i,j=1}^n c_i f(x_i) c_j f(x_j)K_1(x_i,x_j)
+\end{align*}
+
+Now we choose $c_i' = c_i \cdot f(x_i), c_j' = c_j \cdot f(x_j)$ and have
+\[ \sum_{i,j=1}^n c_i' c_j' K_1(x_i,x_j) \geq 0 \]
 
 \subsection*{Task 1}
 
