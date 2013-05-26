@@ -122,7 +122,25 @@ y_i(w^T x_i + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
 Dual:
 
 \begin{align*}
-\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T 
+\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T \\
+\alpha Y = 0 \\
+0 \leq \alpha_i \leq \frac{C}{n} \qquad i = 1, \dots, n
+\end{align*}
+
+Kernel SVM: Primal:
+
+\begin{align*}
+\min_{w, \xi b} \quad \frac{1}{2} \beta^T K \beta + \frac{C}{n} \xi^T \cdot \mathbb{1}_n \\
+y_i(w^T \Phi(x_i) + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
+\xi_i \geq 0 \quad i = 1, \dots, n
+\end{align*}
+
+Dual:
+
+\begin{align*}
+\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T \\
+\alpha Y = 0 \\
+0 \leq \alpha_i \leq \frac{C}{n} \qquad i = 1, \dots, n
 \end{align*}
 
 \section*{Exercise 4}
