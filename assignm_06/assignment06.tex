@@ -96,14 +96,16 @@
  \section*{Exercise 2}
     Figure 2 a from the assignment sheet is most likely to be a Gaussian kernel (rbf) with parameters $\beta = 10$.
 	
-	One could argue, that this scenario is already overfitting as a linear kernel would only lead to two false positives but a much simpler solution. On the other hand, the Gaussian kernel does classify every point correctly and provides a not too complex function. A change in parameters is not essentially neccesary.
+	One could argue, that this scenario is already overfitting as a linear kernel would only lead to two false positives but a much simpler solution. On the other hand, the Gaussian kernel does classify every point correctly and provides a not too complex function. A change in parameters is not essentially necessary.
 	
 	Figure 2 b is most likely to be a polynomial kernel with parameter $c = 10$.
 	
 	The chosen scenario does not separate the classes correctly. Points, which are most definitely no outliers (as they lie in groups) are classified wrong. The situation can be made better by raising $c$ to 100 and the degree $d$ to 3.
 	
-	We guess that almost all points are support vectors. Maybe some of the points inbetween other points of the same class are not.
-	
+	We guess that almost all points are support vectors. Maybe some of the points in between other points of the same class are not.
+
+\newpage
+
 \section*{Exercise 3}
 
 \subsection*{Task}
@@ -114,7 +116,7 @@ Write the primal and dual of SVM in matrix form.
 Soft margin linear SVM: Primal:
 
 \begin{align*}
-\min_{w, \xi b} \quad \frac{1}{2} w^T \cdot w + \frac{C}{n} \xi^T \cdot \mathbb{1}_n \\
+\min_{w, \xi b} \quad \frac{1}{2} w^T \cdot w + \frac{C}{n} \xi^T \cdot \mathbf{1}_n \\
 y_i(w^T x_i + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
 \xi_i \geq 0 \quad i = 1, \dots, n
 \end{align*}
@@ -122,7 +124,7 @@ y_i(w^T x_i + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
 Dual:
 
 \begin{align*}
-\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T \\
+\max_\alpha \alpha^T \cdot \mathbf{1}_n - \frac{1}{2} (\alpha^T.*Y^T) X X^T (\alpha.*Y) \\
 \alpha Y = 0 \\
 0 \leq \alpha_i \leq \frac{C}{n} \qquad i = 1, \dots, n
 \end{align*}
@@ -130,7 +132,7 @@ Dual:
 Kernel SVM: Primal:
 
 \begin{align*}
-\min_{w, \xi b} \quad \frac{1}{2} \beta^T K \beta + \frac{C}{n} \xi^T \cdot \mathbb{1}_n \\
+\min_{w, \xi b} \quad \frac{1}{2} \beta^T K \beta + \frac{C}{n} \xi^T \cdot \mathbf{1}_n \\
 y_i(w^T \Phi(x_i) + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
 \xi_i \geq 0 \quad i = 1, \dots, n
 \end{align*}
@@ -138,10 +140,12 @@ y_i(w^T \Phi(x_i) + b) \geq 1 - \xi_i \quad i = 1, \dots, n \\
 Dual:
 
 \begin{align*}
-\max_\alpha \alpha^T \cdot \mathbb{1}_n - \frac{1}{2} \alpha^T \\
+\max_\alpha \alpha^T \cdot \mathbf{1}_n - \frac{1}{2} (\alpha^T.*Y^T) K (\alpha.*Y) \\
 \alpha Y = 0 \\
 0 \leq \alpha_i \leq \frac{C}{n} \qquad i = 1, \dots, n
 \end{align*}
+
+Whereas $.*$ denotes the elementwise product between two matrices.
 
 \section*{Exercise 4}
 Assume that $K1;K2 : \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R} $ are kernel functions. Which of the following functions are also a valid kernel? Prove or bring a counterexample.
@@ -163,6 +167,8 @@ We want to show that $\sum_{i,j=1}^n c_i c_j K(x_i,x_j) \geq 0$:
 
 As $K_1$ and $K_2$ are valid kernels, 
 $ \sum_{i,j=1}^n c_i c_j K_1(x_i,x_j) \geq 0 $ and $ \sum_{i,j=1}^n c_i c_j K_2(x_i,x_j) \geq 0 $ holds.
+
+\newpage
 
 \subsection*{c) $K = K_1 - K_2$}
 We want to show that $\sum_{i,j=1}^n c_i c_j K(x_i,x_j) < 0$
@@ -189,8 +195,7 @@ We choose  $ \mathcal{X}=\mathbb{R}, n=1, x_1=1, c_1=1$:
 
 \subsection*{e) $K(x,y) = f(x)K_1(x,y)f(y) $ for any function $f:\mathcal{X} \rightarrow \mathbb{R}$ }
 
-\section{Exercise 5}
-We want to show that $ \sum_{i,j=1}^n c_i c_j K(x_i,x_j) \geq 0$.\\
+We want to show that $\sum_{i,j=1}^n c_i c_j K(x_i,x_j) \geq 0$.\\
 With $K(x,y):=f(x)K_1(x,y)f(y)$ we have 
 \begin{align*}
 \sum_{i,j=1}^n c_i c_j K(x_i,x_j) &= \sum_{i,j=1}^n c_i c_j f(x_i)K_1(x_i,x_j)f(x_i) \\
@@ -200,9 +205,13 @@ With $K(x,y):=f(x)K_1(x,y)f(y)$ we have
 Now we choose $c_i' = c_i \cdot f(x_i), c_j' = c_j \cdot f(x_j)$ and have
 \[ \sum_{i,j=1}^n c_i' c_j' K_1(x_i,x_j) \geq 0 \]
 
+because $K_1$ is a kernel function.
+
+\section{Exercise 5}
+
 \subsection*{Task 1}
 
-Show that the corresponding feature map $\Phi$ is given by $\Phi(x) = (1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, x_2^2, \sqrt{2} x_1 x_2)^T$.
+Show that the corresponding feature map $\Phi$ is given by \[\Phi(x) = (1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, x_2^2, \sqrt{2} x_1 x_2)^T.\]
 
 \subsection*{Solution}
 
