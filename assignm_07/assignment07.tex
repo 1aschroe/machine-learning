@@ -1,0 +1,75 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent\item Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃƒÂ¼rlich unterstÃƒÂ¼tzt ;\item )
+% parskip        Absatzabstand anstatt EinzÃƒÂ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃƒÂ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃƒÂ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. Ã¢Â€ÂmacceÃ¢Â€Âœ anstatt Ã¢Â€Âutf8Ã¢Â€Âœ.
+ 
+\usepackage{textcomp}       % ZusÃƒÂ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{listings}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 07}
+\author{Arne Schröder \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+
+ \section*{Exercise 1}
+Für die Entscheidung zur Wahl eines Klassifikators spuielen verschiedene Faktoren eine Rolle, die im Folgenden aufgelistet werden.
+
+Indirekte Faktoren:
+\begin{itemize}
+\item Preis
+\item Performance
+\item Skalierung
+\item Komplexität (der Benutzung)
+\item Dokumentation
+\end{itemize}
+
+Direkte Faktoren:
+\begin{itemize}
+\item Gesamtqualität (geringe Fehlerquote)
+\item Fehleranfälligkeit (bsp. outlier detection)
+\item Einstellbarkeit (Geringe Komplexität bei der Findung der besten Einstellungen)
+\item In Abhängigkeit von den Daten, einen passenden Klassifikator über den bias auswählen (ein linearer Klassifikator macht bspws. bei konzentrischen daten keinen Sinn)
+\end{itemize}
+
+Setup zum Prüfen von Klassifikatoren
+\begin{itemize} 
+\item Zunächst representative Daten erfassen
+\item Immer gleiche Trainings\item  und Testdaten verwenden
+\item Die Mächtigkeit der Tranings- und Testdaten und deren Verhältnis variieren
+\item Möglichst viele (statistisch unabhängige) Trainings\item  und Testdaten
+\item Sukzessizve Erweitrung des Testsatzes um eventuelle Skalierungsfaktoren vorhesagen zu können
+\end{itemize}
+
+Evaluierung der Klassifikatoren nach
+\begin{itemize} 
+\item False positive/negative rate
+\item Leistung (zeit und platzverbrauch)
+\item Output der Interpretation des Algorithmus
+\end{itemize}
+
+\section*{Exercise 2}
+
+\end{document}
