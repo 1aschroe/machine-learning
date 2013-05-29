@@ -7,16 +7,17 @@ function [ pred_labels ] = clsOneVsOne( x_train, y_train, x_test )
 % classes to distinguish)
 clsX = ClassificationDiscriminant.fit(x_train, y_train);
 
-% The cartesian product of 1:m with itself (1:m x 1:m) for m=max(y_train)
-[x, y] = meshgrid(1:max(y_train));
+% The cartesian product of the values in y_train
+% with each other (unique(y_train) x unique(y_train))
+[x, y] = meshgrid(1:size(unique(y_train)));
 cartesian = [x(:) y(:)];
 % From this we select only those entrys where the first component is
 % smaller than the second one
 classRef = cartesian(cartesian(:,1) < cartesian(:,2),:);
 
 % iterate over class combinations and generate weights
-weights = zeros(length(x_test), length(classRef));
-for it=1:length(classRef)
+weights = zeros(length(x_test), size(classRef, 1));
+for it=1:size(classRef, 1)
     classA = classRef(it, 1);
     classB = classRef(it, 2);
     weights(:,it) = evaluateCls(clsX, classA, classB, x_test);
