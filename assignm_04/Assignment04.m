@@ -52,62 +52,17 @@ testList = find(test_label==4 | test_label==3 | test_label==2 | test_label==1);
 x_test = double(test_data(testList,:));
 y_test = double(test_label(testList));
 
-%% one vs. all
-% Each classifier gets trained for one class, so cls1 classifies for 1 and !1, cls2
-% for !2 and so on.
-cls1 = ClassificationDiscriminant.fit(x_train, y_train==1);
-cls2 = ClassificationDiscriminant.fit(x_train, y_train==2);
-cls3 = ClassificationDiscriminant.fit(x_train, y_train==3);
-cls4 = ClassificationDiscriminant.fit(x_train, y_train==4);
-
-% All weights for the testdata are collected from each classifier.
-% The data is written in a 200x4 matrix.
-weights = zeros(length(x_test), 4);
-weights(:,1) = evaluateCls(cls1, 1, 2, x_test);
-weights(:,2) = evaluateCls(cls2, 1, 2, x_test);
-weights(:,3) = evaluateCls(cls3, 1, 2, x_test);
-weights(:,4) = evaluateCls(cls4, 1, 2, x_test);
-
-% min returns the smalles row entry of the weight matrix
-% pred_labels holds the indexes of the columns which are fortunately our labels
-[~,pred_labels] = min(weights,[], 2);
+pred_labels = clsOneVsAll(x_train, y_train, x_test);
 
 % We compare the predicted labels with the reference labels to generate our
 % loss
 err_one_vs_all = loss01(pred_labels, y_test)
 
-%% one vs. one
-% for one vs. one we train our classifier with all labels (i.e. it has four
-% classes to distinguish)
-clsX = ClassificationDiscriminant.fit(x_train, y_train);
-
 % Our weights are stored in a 400x6 matrix, where each column represents a 
 % unique pair of classes:
 classRef = [1 2; 1 3; 1 4; 2 3; 2 4; 3 4];
 
-% iterate over class combinations and generate weights
-weights = zeros(length(x_test), length(classRef));
-for it=1:length(classRef)
-    classA = classRef(it, 1);
-    classB = classRef(it, 2);
-    weights(:,it) = evaluateCls(clsX, classA, classB, x_test);
-end
-
-pred_labels = zeros(length(x_test), 1);
-% for each row find the maximum absolute value and put it into the
-% prediction data
-for it=1:length(x_test)
-    % find absolute max value
-    [val_max_pos, index_max_pos] = max(weights(it, :));
-    [val_max_neg, index_max_neg] = max(weights(it, :)*-1);
-    if(val_max_pos > val_max_neg)
-        % reference first class if max value was positive (classA)
-        pred_labels(it) = classRef(index_max_pos, 1);
-    else
-        % reference second class if max value was negative (classB)
-        pred_labels(it) = classRef(index_max_neg, 2);
-    end
-end
+pred_labels = clsOneVsOne(x_train, y_train, x_test, classRef);
 
 % Compare the predicted labels with the reference labels to generate loss
 err_one_vs_one = loss01(pred_labels, y_test)
