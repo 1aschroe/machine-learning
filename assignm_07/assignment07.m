@@ -21,9 +21,7 @@ y_train=y(indices(1:train_size));
 x_test=x(indices((train_size+1):(train_size + test_size)),:);
 y_test=y(indices((train_size+1):(train_size + test_size)));
 
-classRef = [1 2; 1 3; 1 4];
-
-pred_labels = clsOneVsOne(x_train, y_train, x_test, classRef);
+pred_labels = clsOneVsOne(x_train, y_train, x_test);
 
 err_OneVsOne = loss01(pred_labels, y_test)
 

@@ -1,4 +1,4 @@
-function [ pred_labels ] = clsOneVsOne( x_train, y_train, x_test, classRef )
+function [ pred_labels ] = clsOneVsOne( x_train, y_train, x_test )
 %CLSONEVSONE Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -6,6 +6,13 @@ function [ pred_labels ] = clsOneVsOne( x_train, y_train, x_test, classRef )
 % for one vs. one we train our classifier with all labels (i.e. it has four
 % classes to distinguish)
 clsX = ClassificationDiscriminant.fit(x_train, y_train);
+
+% The cartesian product of 1:m with itself (1:m x 1:m) for m=max(y_train)
+[x, y] = meshgrid(1:max(y_train));
+cartesian = [x(:) y(:)];
+% From this we select only those entrys where the first component is
+% smaller than the second one
+classRef = cartesian(cartesian(:,1) < cartesian(:,2),:);
 
 % iterate over class combinations and generate weights
 weights = zeros(length(x_test), length(classRef));
