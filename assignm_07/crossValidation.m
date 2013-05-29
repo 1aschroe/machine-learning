@@ -10,12 +10,12 @@ err = zeros(partition.NumTestSets, 1);
 
 for it=1:partition.NumTestSets
     
-    x = x_train(partition.training(it));
+    x = x_train(partition.training(it),:);
     y = y_train(partition.training(it));
     
     [ w, b ] = solveSVM( c, x, y );
     
-    x_test = x_train(partition.test(it));
+    x_test = x_train(partition.test(it),:);
     y_test = y_train(partition.test(it));
     pred = sign(b + x_test * w);
     

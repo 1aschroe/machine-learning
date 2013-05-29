@@ -13,8 +13,10 @@ c = 10.^(-2:2);
 train_err = zeros(length(c), 1);
 test_err = zeros(length(c), 1);
 
+folds = 3;
+
 for it=1:length(c)
-    train_err(it) = crossValidation(x_train, y_train, c(it), 3);
+    train_err(it) = crossValidation(x_train, y_train, c(it), folds);
     [ w, b ] = solveSVM( c(it), x_train, y_train );
     
     pred = sign(b + x_test * w);
