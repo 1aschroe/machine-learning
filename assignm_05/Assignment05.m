@@ -1,9 +1,9 @@
-addpath .\cvx-1.22\cvx
-addpath .\cvx-1.22\cvx\structures
-addpath .\cvx-1.22\cvx\lib
-addpath .\cvx-1.22\cvx\functions
-addpath .\cvx-1.22\cvx\commands
-addpath .\cvx-1.22\cvx\builtins
+addpath ..\shared\cvx
+addpath ..\shared\cvx\structures
+addpath ..\shared\cvx\lib
+addpath ..\shared\cvx\functions
+addpath ..\shared\cvx\commands
+addpath ..\shared\cvx\builtins
 
 load('cancer-data.mat');
 
@@ -20,4 +20,4 @@ for it=1:length(c)
     test_err(it) = loss01(pred, cancerTarget_test);
 end
 
-plot(log(c), log(train_err), log(c), log(test_err));
+loglog(c, train_err, c, test_err);

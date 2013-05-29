@@ -2,12 +2,12 @@
 
 clear all;
 
-addpath ..\assignm_05\cvx-1.22\cvx
-addpath ..\assignm_05\cvx-1.22\cvx\structures
-addpath ..\assignm_05\cvx-1.22\cvx\lib
-addpath ..\assignm_05\cvx-1.22\cvx\functions
-addpath ..\assignm_05\cvx-1.22\cvx\commands
-addpath ..\assignm_05\cvx-1.22\cvx\builtins
+addpath ..\shared\cvx
+addpath ..\shared\cvx\structures
+addpath ..\shared\cvx\lib
+addpath ..\shared\cvx\functions
+addpath ..\shared\cvx\commands
+addpath ..\shared\cvx\builtins
 cvx_quiet(true)
 
 x = [-3 3;-3 2;-2 3;-1 1;1 3;2 2;2 3;3 1];
