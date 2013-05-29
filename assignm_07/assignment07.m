@@ -1,7 +1,8 @@
-
-%[x_train, y_train, x_test, y_test] = loadShuttleData();
+[x_train, y_train, x_test, y_test] = loadShuttleData();
 
 [x_train, y_train, x_test, y_test] = loadCancerData();
+
+[x_train, y_train, x_test, y_test] = loadUSPSData();
 
 pred_labels = clsOneVsOne(x_train, y_train, x_test);
 
