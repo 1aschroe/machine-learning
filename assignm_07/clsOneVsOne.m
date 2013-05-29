@@ -9,7 +9,7 @@ clsX = ClassificationDiscriminant.fit(x_train, y_train);
 
 % The cartesian product of the values in y_train
 % with each other (unique(y_train) x unique(y_train))
-[x, y] = meshgrid(1:size(unique(y_train)));
+[x, y] = meshgrid(1:size(unique(y_train), 1));
 cartesian = [x(:) y(:)];
 % From this we select only those entrys where the first component is
 % smaller than the second one
@@ -32,10 +32,10 @@ for it=1:length(x_test)
     [val_max_neg, index_max_neg] = max(weights(it, :)*-1);
     if(val_max_pos > val_max_neg)
         % reference first class if max value was positive (classA)
-        pred_labels(it) = classRef(index_max_pos, 1);
+        pred_labels(it) = clsX.ClassNames(classRef(index_max_pos, 1));
     else
         % reference second class if max value was negative (classB)
-        pred_labels(it) = classRef(index_max_neg, 2);
+        pred_labels(it) = clsX.ClassNames(classRef(index_max_neg, 2));
     end
 end
 
