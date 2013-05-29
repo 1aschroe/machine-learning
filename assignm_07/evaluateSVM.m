@@ -9,7 +9,7 @@ addpath ..\shared\cvx\functions
 addpath ..\shared\cvx\commands
 addpath ..\shared\cvx\builtins
 
-c = 10.^(-2:0.5:2);
+c = 10.^(-2:2);
 train_err = zeros(length(c), 1);
 test_err = zeros(length(c), 1);
 
