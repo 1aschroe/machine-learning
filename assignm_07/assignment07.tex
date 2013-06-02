@@ -35,7 +35,7 @@
 % \tableofcontents            % Inhaltsverzeichnis anlegen
 
  \section*{Exercise 1}
-Für die Entscheidung zur Wahl eines Klassifikators spuielen verschiedene Faktoren eine Rolle, die im Folgenden aufgelistet werden.
+Für die Entscheidung zur Wahl eines Klassifikators spielen verschiedene Faktoren eine Rolle, die im Folgenden aufgelistet werden.
 
 Indirekte Faktoren:
 \begin{itemize}
@@ -51,25 +51,52 @@ Direkte Faktoren:
 \item Gesamtqualität (geringe Fehlerquote)
 \item Fehleranfälligkeit (bsp. outlier detection)
 \item Einstellbarkeit (Geringe Komplexität bei der Findung der besten Einstellungen)
-\item In Abhängigkeit von den Daten, einen passenden Klassifikator über den bias auswählen (ein linearer Klassifikator macht bspws. bei konzentrischen daten keinen Sinn)
+\item In Abhängigkeit von den Daten, einen passenden Klassifikator über den bias auswählen (ein linearer Klassifikator macht bspws. bei konzentrischen Daten keinen Sinn)
 \end{itemize}
 
 Setup zum Prüfen von Klassifikatoren
 \begin{itemize} 
-\item Zunächst representative Daten erfassen
+\item Zunächst repräsentative Daten erfassen
 \item Immer gleiche Trainings\item  und Testdaten verwenden
 \item Die Mächtigkeit der Tranings- und Testdaten und deren Verhältnis variieren
 \item Möglichst viele (statistisch unabhängige) Trainings\item  und Testdaten
-\item Sukzessizve Erweitrung des Testsatzes um eventuelle Skalierungsfaktoren vorhesagen zu können
+\item Sukzessive Erweiterung des Testsatzes um eventuelle Skalierungsfaktoren vorhersagen zu können
 \end{itemize}
 
 Evaluierung der Klassifikatoren nach
 \begin{itemize} 
 \item False positive/negative rate
-\item Leistung (zeit und platzverbrauch)
+\item Leistung (Zeit und Platzverbrauch)
 \item Output der Interpretation des Algorithmus
 \end{itemize}
 
 \section*{Exercise 2}
+
+\textbf{1. Selecting candidate classifiers: Consider at least three different classifiers}\\
+
+Our classifiers:
+\begin{itemize} 
+\item kNN
+\item SVM
+\item LDA
+\end{itemize}
+
+\textbf{2. Choosing datasets: You should use at least three different datasets.}\\
+
+The datasets that we used:
+\begin{itemize} 
+\item USPS
+\item Breast cancer
+\item Shuttle dataset
+\end{itemize}
+
+\textbf{3. Run the algorithms on the data sets and compare the results.}\\
+
+
+\textbf{4. Try to understand the results and the data.}\\
+
+\textbf{5. Visualization}\\
+
+See the Matlab plots.
 
 \end{document}
