@@ -1,0 +1,56 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent\item Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃ¼rlich unterstÃ¼tzt ;\item )
+% parskip        Absatzabstand anstatt EinzÃ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. âmacceâ anstatt âutf8â.
+ 
+\usepackage{textcomp}       % ZusÃ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{listings}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 08}
+\author{Arne Schr�der \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+
+\section*{Exercise 1}
+%TODO Bild einf�gen
+
+\section*{Exercise 2: Expressing the variance}
+
+\begin{itemize}
+	\item \textbf{What does it mean if a single eigenvector covers 90\% of the data variance?}
+	
+	It means the data is almost liner distributed in one direction.
+	
+	\item \textbf{How would you interpret the results if the eigenvector $v_1= [0;1;1;1]^T$ covers 85\% of the data variance.}
+	
+	It means that independent from age the time spent playing with computer, the time spent in facebook and the time spent doing sport are highly correlated.
+	
+\end{itemize}
+
+\section{Exercise 3: Generating samples from a Gaussian distribution}
+
+
+\end{document}
