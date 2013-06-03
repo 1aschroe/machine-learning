@@ -13,9 +13,8 @@
 		<exec executable="git" failonerror="true">
 			<arg value="pull" />
 		</exec>
-		<exec executable="pdflatex" failonerror="true">
-			<arg value="${ass.dir}/assignment${assignment.no}.tex" />
-			<arg value="-output-directory=${basedir}/${ass.dir}" />
+		<exec executable="pdflatex" failonerror="true" dir="${ass.dir}">
+			<arg value="assignment${assignment.no}.tex" />
 		</exec>
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
 		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
