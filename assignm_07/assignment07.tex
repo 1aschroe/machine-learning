@@ -72,7 +72,9 @@ Evaluierung der Klassifikatoren nach
 
 \section*{Exercise 2}
 
-\textbf{1. Selecting candidate classifiers: Consider at least three different classifiers}\\
+\begin{enumerate}
+
+\item \textbf{Selecting candidate classifiers: Consider at least three different classifiers}
 
 Our classifiers:
 \begin{itemize} 
@@ -81,22 +83,29 @@ Our classifiers:
 \item LDA
 \end{itemize}
 
-\textbf{2. Choosing datasets: You should use at least three different datasets.}\\
+For multiclass-classification the approaches one-vs-one and one-vs-all were used.
+
+\item \textbf{Choosing datasets: You should use at least three different datasets.}
 
 The datasets that we used:
 \begin{itemize} 
 \item USPS
 \item Breast cancer
-\item Shuttle dataset
+\item Random sample from Statlog Shuttle dataset
+
+(http://archive.ics.uci.edu/ml/datasets/Statlog+\%28Shuttle\%29)
 \end{itemize}
 
-\textbf{3. Run the algorithms on the data sets and compare the results.}\\
+\item \textbf{Run the algorithms on the data sets and compare the results.}
 
+For the smallest data set, the cancer data set, SVM and LDA perform reasonably well with an error rate of 3 \%, whereas kNN outperforms theses with an error rate of 2 \%.
 
-\textbf{4. Try to understand the results and the data.}\\
+The other data sets did not perform acceptably with SVM, so we only compared LDA with kNN. With the shuttle data set, kNN had an error rate of 0.4 \%, whereas LDA had an error rate of 4.8 \% and 10.8 \% with one-vs-one and one-vs-all respectively. The USPS data set showed similar error rates for LDA: had an error rate of 11.1 \% and 14.7 \% with one-vs-one and one-vs-all respectively, whereas kNN failed to run because the datasets were too large.
 
-\textbf{5. Visualization}\\
+\item \textbf{Try to understand the results and the data.}
 
-See the Matlab plots.
+The better results for kNN do not surprise too much in the first place as SVM and LDA try to differentiate two classes by a hyperplane, whereas kNN does not have such a restriction and is able to differentiate much more complex classes.
+
+\end{enumerate}
 
 \end{document}
