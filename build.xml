@@ -5,10 +5,8 @@
 
 	<taskdef resource="net/sf/antcontrib/antlib.xml" />
 	<property environment="env" />
-	<property name="mail.smtp" value="smtp.gmail.com" />
-	<property name="mail.user" value="name.nachname@gmail.com" />
-	<property name="mail.passwd" value="passwort" />
-	<property name="assignment.no" value="06" />
+	<property file="login.properties" />
+	<property name="assignment.no" value="07" />
 	<property name="ass.dir" value="assignm_${assignment.no}" />
 
 	<target name="hand.in">
@@ -21,13 +19,13 @@
 		</exec>
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
 		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
-		<!-- TODO: change recipiant when done -->
+		<!-- FIXME: change recipiant when done -->
 		<mail
-		    tolist="Arne.Schroeder@classix.de"
+		    tolist="Arne.Schroeder@gmail.com"
 		    from="${mail.user}"
 		    subject="ML - Asignment ${assignment.no}"
-		    mailhost="smtp.gmail.com"
-		    mailport="465"
+		    mailhost="${mail.smtp}"
+		    mailport="${mail.port}"
 		    ssl="true"
 		    user="${mail.user}"
 		    password="${mail.passwd}">
