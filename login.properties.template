@@ -1,0 +1,4 @@
+mail.smtp=mailhost.informatik.uni-hamburg.de
+mail.user=1nachnam
+mail.passwd=passwort
+mail.port=587
