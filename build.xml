@@ -15,7 +15,7 @@
 		</exec>
 		<exec executable="pdflatex" failonerror="true">
 			<arg value="${ass.dir}/assignment${assignment.no}.tex" />
-			<arg value="-output-directory=${ass.dir}" />
+			<arg value="-output-directory=${basedir}/${ass.dir}" />
 		</exec>
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
 		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
