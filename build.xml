@@ -17,23 +17,30 @@
 			<arg value="assignment${assignment.no}.tex" />
 		</exec>
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
-		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
+		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
 		<!-- FIXME: change recipiant when done -->
 		<mail
-		    tolist="Arne.Schroeder@gmail.com"
-		    from="${mail.user}"
-		    subject="ML - Asignment ${assignment.no}"
+		    tolist="Alamgir@informatik.uni-hamburg.de"
+		    cclist="Angel.Bakardzhiev@informatik.uni-hamburg.de,Falk.Oswald@informatik.uni-hamburg.de,Arne.Schroeder@informatik.uni-hamburg.de"
+		    from="${mail.user}@informatik.uni-hamburg.de"
+		    subject="[ML] Assignment ${assignment.no} (Bakarzhiev, Oswald, Schröder)"
 		    mailhost="${mail.smtp}"
 		    mailport="${mail.port}"
-		    ssl="true"
 		    user="${mail.user}"
+		    enableStartTLS="true"
 		    password="${mail.passwd}">
 		    <message>Hello Morteza,
 
-	            attached our solution.
+attached our solution.
 
-	            Regards,
-	            Arne, Falk, Angel</message>
+Regards,
+Arne, Falk, Angel</message>
+		    <attachments>
+			<fileset dir="${ass.dir}">
+			    <include name="*_SchroederOswaldBakardzhiev.pdf" />
+			    <include name="*_SchroederOswaldBakardzhiev.zip" />
+			</fileset>
+		    </attachments>
 		</mail>
 	</target>
 </project>
