@@ -50,7 +50,25 @@
 	
 \end{itemize}
 
-\section{Exercise 3: Generating samples from a Gaussian distribution}
+\section*{Exercise 3: Generating samples from a Gaussian distribution}
+\subsection*{Task}
 
+Show that in eigen decomposition, $A = S2 \cdot S2'$.
+
+\subsection*{Solution}
+
+We defined $V$ and $D$ by the eigendecomposition:
+
+\[
+  A = V \cdot D \cdot V^{-1}
+\]
+
+$A$ being symmetric and realvalued results in $V$ being orthogonal, thus $V^{-1} = V^t$.
+
+Now $S2 = V \cdot \sqrt(D)$, therefore
+
+\[
+  S2 \cdot S2^t = V \cdot \sqrt(D) \cdot (V \cdot \sqrt(D))^t = V \cdot \sqrt(D)\cdot \sqrt(D)^t \cdot V^t = V \cdot D \cdot V^{-1} = A
+\]
 
 \end{document}
