@@ -35,7 +35,7 @@ X= GenerateData(Sigma, mu, 500);
 
 %% Exercise 5
 
-[x_train, y_train, x_test, y_test] = loadUSPSData();
+[x_train, y_train, ~, ~] = loadUSPSData();
 [V, D] = PCA(x_train(y_train==5,:));
 eigenvalues = D * ones(size(D, 1), 1);
 [~, largestIndices] = sort(eigenvalues, 'descend');
@@ -45,6 +45,31 @@ drawNumber(principalComponent);
 figure;
 secondComponent = V(:, largestIndices(2));
 drawNumber(secondComponent);
+
+%% Exercise 6
+[x_train, y_train, ~, ~] = loadUSPSData();
+
+sampleSize = 300;
+maxDigit = 4;
+samples = zeros(maxDigit*sampleSize, 1);
+for digit = 1 : maxDigit
+    indices = randsample(length(find(y_train==digit)), sampleSize);
+    samples((digit - 1)*sampleSize + 1 : digit*sampleSize) = ...
+        indices + find(y_train==digit, 1 );
+end
+
+X = x_train(samples, :);
+Y = y_train(samples);
+k = 10;
+
+A = buildKnnGraph(X,k);
+D = graphallshortestpaths(A,'Directed', false);
+xy = Isomap(D,2);
+figure;
+scatter(xy(:,1),xy(:,2),10,Y,'filled');
+
+% larger k causes all data to be mapped with a lot of overlap
+% smaller k causes single classes to be disconnected
 end
 
 function [X] = GenerateData(Sigma, mu, n)
