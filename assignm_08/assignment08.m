@@ -32,6 +32,19 @@ X= GenerateData(Sigma, mu, 500);
 [V, D] = eig(Sigma)
 
 % one can see that up to an error below 10 % these values agree
+
+%% Exercise 5
+
+[x_train, y_train, x_test, y_test] = loadUSPSData();
+[V, D] = PCA(x_train(y_train==5,:));
+eigenvalues = D * ones(size(D, 1), 1);
+[~, largestIndices] = sort(eigenvalues, 'descend');
+figure;
+principalComponent = V(:, largestIndices(1));
+drawNumber(principalComponent);
+figure;
+secondComponent = V(:, largestIndices(2));
+drawNumber(secondComponent);
 end
 
 function [X] = GenerateData(Sigma, mu, n)
