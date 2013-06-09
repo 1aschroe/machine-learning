@@ -22,7 +22,7 @@
 		    tolist="Alamgir@informatik.uni-hamburg.de"
 		    cclist="Angel.Bakardzhiev@informatik.uni-hamburg.de,Falk.Oswald@informatik.uni-hamburg.de,Arne.Schroeder@informatik.uni-hamburg.de"
 		    from="${mail.user}@informatik.uni-hamburg.de"
-		    subject="[ML] Assignment ${assignment.no} (Bakarzhiev, Oswald, Schröder)"
+		    subject="[ML] Assignment ${assignment.no} (Bakardzhiev, Oswald, Schröder)"
 		    mailhost="${mail.smtp}"
 		    mailport="${mail.port}"
 		    user="${mail.user}"
