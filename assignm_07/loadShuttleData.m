@@ -16,7 +16,7 @@ y=shuttle(:,10);
 train_size = 5000;
 test_size = 500;
 
-% create reandom indices for the retrievel of the datased
+% create random indices for the retrievel of the datased
 indices = randsample(size(x,1),train_size + test_size);
 % Retrieve random test and traindata from the dataset
 x_train=x(indices(1:train_size),:);
