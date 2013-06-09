@@ -6,7 +6,7 @@
 	<taskdef resource="net/sf/antcontrib/antlib.xml" />
 	<property environment="env" />
 	<property file="login.properties" />
-	<property name="assignment.no" value="07" />
+	<property name="assignment.no" value="08" />
 	<property name="ass.dir" value="assignm_${assignment.no}" />
 
 	<target name="hand.in">
@@ -18,7 +18,6 @@
 		</exec>
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
 		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
-		<!-- FIXME: change recipiant when done -->
 		<mail
 		    tolist="Alamgir@informatik.uni-hamburg.de"
 		    cclist="Angel.Bakardzhiev@informatik.uni-hamburg.de,Falk.Oswald@informatik.uni-hamburg.de,Arne.Schroeder@informatik.uni-hamburg.de"
