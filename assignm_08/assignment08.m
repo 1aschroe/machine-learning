@@ -10,6 +10,8 @@ X = GenerateData(Sigma, mu, n);
 
 plot3(X(:,1), X(:,2), X(:,3), '.')
 
+[V_Sigma, D_Sigma] = eig(Sigma)
+
 v = sqrt(2)/2 * [ 1, 1; -1, 1 ];
 d = [ 3, 0; 0, 1 ];
 
