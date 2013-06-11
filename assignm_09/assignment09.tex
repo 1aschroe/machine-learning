@@ -1,0 +1,57 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent\item Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃ¼rlich unterstÃ¼tzt ;\item )
+% parskip        Absatzabstand anstatt EinzÃ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. âmacceâ anstatt âutf8â.
+ 
+\usepackage{textcomp}       % ZusÃ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 09}
+\author{Arne Schr�der \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+
+\section*{Exercise 3: Spectral clustering demo}
+
+\subsection*{Question}
+
+For which range of $k$ do the clusters in the embedding look ``well separated''?
+
+\subsection*{Answer}
+
+For the balanced two moons data set, best values were obtained when using a $k$ between 4 and 20.
+
+\subsection*{Question}
+
+Describe the interplay between the kernel width $\sigma$ and the number of neighbours $k$. What would happen if we choose a large $k$, but small $\sigma$?
+
+\subsection*{Answer}
+
+If $k$ becomes too big, $\sigma$ becomes more important in separating clusters: If both values are high, every point is seen as being similar to every other point, thus reducing the algorithm's ability to distinguish between clusters. If we chose $\sigma$ small, $k$ becomes less relevant, as many points are connected by a value close to zero.
+
+If we chose a big $k$ and a small $\sigma$, the algorithm would become very sensitive to outliers, because then the distance between points is the main criterion for distinguishing clusters, making spectral clustering similar valuable as single linkage.
+\end{document}
