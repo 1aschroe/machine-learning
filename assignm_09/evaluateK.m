@@ -17,12 +17,6 @@ for it = 1:length(k_values)
     error_train(it) = loss01(train_pred_label, train_label);
 end
 
-%% Section 7
-
-figure; clf; hold all;
-plot(k_values,error_test,'r*:');
-plot(k_values,error_train,'b.-');
-
 
 %% Section 8
 [sorted, index] = sort(error_test);

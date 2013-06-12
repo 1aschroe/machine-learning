@@ -1,6 +1,6 @@
 function [ X, Y ] = loadData( )
-%LOADDATA Summary of this function goes here
-%   Detailed explanation goes here
+%LOADDATA Loads the USPS Dataset and extracts all 1, 3, 4, 6.
+%Returns X = traindata, Y = trainlabels
 
 [x_train, y_train, ~, ~] = loadUSPSData();
 
