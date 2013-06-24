@@ -114,4 +114,42 @@ The created data constisted of 4 clusters with noise as displayed in the figure 
     As expected, the clustering on this gaussian distributed clusters works pretty good.
     However, as kMeans only detects the clusters and assigns the "nearest noise" to the clusters, hierarchical clustering even detects the noise data appropriately.
     
+\subsection*{SVM}
+In the following are the plots for the SVM with different kernels and data.
+
+	\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_plot_yeast.PNG}
+        \caption{SVM with RBF kernel on the yeast data. X axis represents the classes and Y axis the prediction.}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_roc_yeast.PNG}
+        \caption{ROC curve for the column 1 and 2}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_plot_synthetic.PNG}
+        \caption{SVM with RBF kernel on synthetic data. X axis represents the classes and Y axis the prediction.}
+    \end{figure}
+        
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_roc_synthetic.PNG}
+        \caption{ROC curve for the synthetic data}
+    \end{figure}        
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_plot_shuttle.PNG}
+        \caption{SVM with polynomial kernel on shuttle data. X axis represents the classes and Y axis the prediction.}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{cluster_svm_roc_shuttle.PNG}
+        \caption{ROC curve for the shuttle data}
+    \end{figure}        
 \end{document}
