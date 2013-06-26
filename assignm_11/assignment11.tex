@@ -1,0 +1,80 @@
+\documentclass[fontsize=12pt,a4paper]{scrartcl}
+ 
+% Das Prozent\item Zeichen leitet einen Kommentar ein,
+% es hilft ebenso, im Text Leerzeichen zu unterbinden.
+ 
+% fontsize=12pt  Schriftgroesse in 10, 11 oder 12 Punkt
+% a4paper        Papierformat ist hier A4
+% landscape      Querformat wird natÃƒÂ¼rlich unterstÃƒÂ¼tzt ;\item )
+% parskip        Absatzabstand anstatt EinzÃƒÂ¼ge
+% draft          Der Entwurfsmodus deckt SchwÃƒÂ¤chen auf
+% {scrartcl}     Die Dokumentenklasse book, report, article
+%                oder fÃƒÂ¼rs deutsche scrbook, scrreprt, scrartcl
+ 
+%\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage[latin1]{inputenc} % Direkte Angabe von Umlauten im Dokument.
+                            % Wenn Sie an einem Mac sitzen,verwenden
+                            % Sie ggf. Ã¢Â€ÂžmacceÃ¢Â€Âœ anstatt Ã¢Â€Âžutf8Ã¢Â€Âœ.
+ 
+\usepackage{textcomp}       % ZusÃƒÂ¤tzliche Symbolzeichen
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+\lstset{tabsize=4, showspaces=false}
+
+
+\title{Machine Learning SS2013}
+\subtitle{Ulrike von Luxburg \\ Assignment 11}
+\author{Arne Schröder \and Falk Oswald \and Angel Bakardzhiev}
+ 
+\date{\today}               % \today setzt das heutige Datum
+ 
+\begin{document}
+\maketitle                  % Titelei erzeugen
+% \tableofcontents            % Inhaltsverzeichnis anlegen
+
+\section*{Exercise 1: Beispiel für Anwendung von Reinforcement Learning}
+
+\subsection*{Automatischer Pfannkuchenwender}
+
+\begin{itemize}
+\item [States] Positionen, Geschwindigkeit von Pfanne und Pfannkuchen
+\item [Actions] Änderung der Geschwindikeit der Pfanne
+\item [Rewards-Funktion] Entfernung der Lande-Position des Pfannkuchens vom Zentru der Pfanne. Drehung des Pfannkuchens (Hat er sich gedreiht, wie oft?): Position geht über Fauß-Funktion mit kleinem Faktor ein. Einmaliges Wenden bringt 1000, zweimaliges Wenden 1100 usw.
+\item [State-Space] 3d, Drehung: 3d, Geschwindigkeit:, das ganze für Pfanne und Kuchen: 24d.
+\end{itemize}
+
+\subsection*{Automatischer Staubsaugerroboter}
+
+\begin{itemize}
+\item [States] Position, Ausrichtung (Orientierung), abgefahrene Fläche
+\item [Actions] Zu nächster Position fahren
+\item [Rewards-Funktion] Menge des übrig gebliebenen Staubs stark negativ berücksichtigen und die Zeit, die benötigt wird, leicht negativ.
+\item [State-Space] Position: 2d, Orientierung: 1d, Abgefahrene Fläche (n*m Rasterpunkte (0= nicht besucht, 1 = besucht)
+\end{itemize}
+
+\subsection*{Automatischer Playing KI (Schach)}
+\begin{itemize}
+\item [States] Positionen der Figuren
+\item [Actions] Bewegen der Figuren
+\item [Rewards-Funktion] Gewichtete Anzahl der Figuren, Bewegungsmöglichkeiten, Schach(matt)
+\item [State-Space] 64d (Für jedes Feld, welche Figur drauf steht)
+\end{itemize}
+
+\section*{RL-Ansatz}
+Nein.
+
+RL ist nicht angebracht, wenn 100 \% zuverlässige Anforderungen gestellt werden (bsp. Flugzeug fliegen), da es keine Garantie gibt, dass RL zu irgend einem zeitpunkt nicht scheitern wird.
+
+RL kann ebenfalls nicht angewendet werden, wenn ein State nicht eindeutigt bestimmt werden kann oder wenn keine gute Reward Funktion definiert werden kann.
+
+\section*{Grid-world V-function}
+
+\subsection*{Optimale Policy}
+Slide 66 c)
+
+      
+\end{document}
