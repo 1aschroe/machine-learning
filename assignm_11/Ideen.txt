@@ -9,9 +9,10 @@ Applications:
   Geschwindigkeitsänderungen: wie Geschwindigkeit
   Action-State-Space: 30d
 - Staubsaugen
-  States: Position, Abgefahrene Fläche
+  States: Position, Orientierung, Abgefahrene Fläche
   Actions: Zu nächster Position fahren
   Rewards-Function: Menge des übrig gebliebenen Staubs stark negativ berücksichtigen und die Zeit, die benötigt wird, leicht negativ.
+  State-Space: Position: 2d, Orientierung: 1d, Fläche: N x M Grid
 - Game Playing (KI für Schach)
   States: Positionen der Figuren
   Actions: Bewegen der Figuren
