@@ -1,0 +1,15 @@
+Applications:
+- Advertising (Does the user fall for the advertisment?)
+- Searching (What does the user actually mean?)
+- Pfannkuchen wenden
+  States: Positionen, Geschwindigkeit von Pfanne und Pfannkuchen
+  Actions: Änderung der Geschwindigkeit der Pfanne
+  Rewards-Function: Entfernung der Lande-Position des Pfannkuchens vom Zentrum der Pfanne, Drehung des Pfannkuchens (Hat er sich gedreht? Wie oft?): Position geht über Gaussian-Funktion mit kleinem Faktor ein. Einmaliges Wenden bringt 1000, zweimaliges 1100 usw.
+- Staubsaugen
+  States: Position, Abgefahrene Fläche
+  Actions: Zu nächster Position fahren
+  Rewards-Function: Menge des übrig gebliebenen Staubs stark negativ berücksichtigen und die Zeit, die benötigt wird, leicht negativ.
+- Game Playing (KI für Schach)
+  States: Positionen der Figuren
+  Actions: Bewegen der Figuren
+  Rewards-Function: Gewichtete Anzahl der Figuren, Bewegungsmöglichkeiten, Schach(matt)
