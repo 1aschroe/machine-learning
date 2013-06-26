@@ -5,6 +5,9 @@ Applications:
   States: Positionen, Geschwindigkeit von Pfanne und Pfannkuchen
   Actions: Änderung der Geschwindigkeit der Pfanne
   Rewards-Function: Entfernung der Lande-Position des Pfannkuchens vom Zentrum der Pfanne, Drehung des Pfannkuchens (Hat er sich gedreht? Wie oft?): Position geht über Gaussian-Funktion mit kleinem Faktor ein. Einmaliges Wenden bringt 1000, zweimaliges 1100 usw.
+  State-Space: Position: 3d, Drehung: 3d, Geschwindigkeit: das gleiche noch mal, das ganze für Pfanne und Kuchen: 24d
+  Geschwindigkeitsänderungen: wie Geschwindigkeit
+  Action-State-Space: 30d
 - Staubsaugen
   States: Position, Abgefahrene Fläche
   Actions: Zu nächster Position fahren
