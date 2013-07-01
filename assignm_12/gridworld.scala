@@ -1,3 +1,5 @@
+
+
 import scala.util.Random
 
 object GridWorld {
@@ -8,23 +10,39 @@ object GridWorld {
     var positionAgent = (0, 0)
     println(positionAgent)
     while(grid(positionAgent._1)(positionAgent._2) != 'G') {
-      val direction = Random.nextInt(3)
+      val direction = Random.nextInt(4)
       direction match {
-        case 0 => { // nach oben
-          val newPositionAgent = (positionAgent._1, positionAgent._2 -  1)
+        case 0 => { // nach links
+          val newPositionAgent = (positionAgent._1, positionAgent._2 - 1)
           if (newPositionAgent._2 >= 0 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
             positionAgent = newPositionAgent
           }
         }
-        case 1 => { // nach unten
-          val newPositionAgent = (positionAgent._1, positionAgent._2 +  1)
-          if (newPositionAgent._2 < grid(0).length - 1 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
+        case 1 => { // nach rechts
+          val newPositionAgent = (positionAgent._1, positionAgent._2 + 1)
+          if (newPositionAgent._2 <= grid(0).length - 1 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
             positionAgent = newPositionAgent
           }
         }
-        case _ => {}
+        case 2 => { // nach unten
+          val newPositionAgent = (positionAgent._1 + 1, positionAgent._2)
+          if (newPositionAgent._1 <= grid.length - 1 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
+            positionAgent = newPositionAgent
+          }
+        }
+        case 3 => { // nach oben
+          val newPositionAgent = (positionAgent._1 - 1, positionAgent._2)
+          if (newPositionAgent._1 > 0  && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
+            positionAgent = newPositionAgent
+          }
+        }
+        case _ => {
+          println("BAD!")
+        }
       }
     }
+    
+    println ("DONE!")
   }
 
   def generateGridWorld(xSize: Int, ySize: Int): Array[Array[Char]] = {
