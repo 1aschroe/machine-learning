@@ -64,19 +64,19 @@
 \item [State-Space] 64d (Für jedes Feld, welche Figur drauf steht)
 \end{description}
 
-\section*{RL-Ansatz}
+\section*{Exercise 2: RL-Ansatz}
 Nein.
 
 RL ist nicht angebracht, wenn 100 \% zuverlässige Anforderungen gestellt werden (bsp. Flugzeug fliegen), da es keine Garantie gibt, dass RL zu irgend einem zeitpunkt nicht scheitern wird.
 
 RL kann ebenfalls nicht angewendet werden, wenn ein State nicht eindeutigt bestimmt werden kann oder wenn keine gute Reward Funktion definiert werden kann.
 
-\section*{Exercise 2: Grid-world V-function}
+\section*{Exercise 3: Grid-world V-function}
 
 \subsection*{Optimale Policy}
 See slide 66 c)
 
-\section*{Exercise 3: Bellman Equation for the $Q$-function}
+\section*{Exercise 4: Bellman Equation for the $Q$-function}
 
 $Q^\pi(s, a)$ gives the value of an action $a$ when being in state $s$ using the policy $\pi$.
 
@@ -92,7 +92,7 @@ For each of these follow up states, we consider the expected rewards $R^a_{ss'}$
   Q^\pi(s, a) = \sum_{s'} P^a_{ss'} \left(R^a_{ss'} + \sum_{a'} \pi(s', a') Q^\pi(s', a') \right)
 \]
 
-\section*{Exercise 4: Maze}
+\section*{Exercise 5: Maze}
 
 Wird für jeden beliebigen Durchlauf durch das Labyrinth der gleiche Reward vergeben, so ist in diesem Sinne auch jeder Durchlauf gleich gut (solange er nicht in einer Endlosschleife hängen bleibt). Wir würden jedoch einen zielstrebigen Durchlauf, welcher weniger Schritte benötigt, als besser ansehen.
 
