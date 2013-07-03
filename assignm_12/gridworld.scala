@@ -15,9 +15,33 @@ object GridWorld {
 
   def main(args: Array[String]) = {
     var qFunction = Array.ofDim[Double](dimensions._1, dimensions._2, 4)
-	for (i <- 1 to 500) {
+    for (i <- 1 to 500) {
       qFunction = runSimulation(grid, qFunction)
-	}
+      if (verbose) {
+      println("The value function:")
+      for (j <- 0 until dimensions._1) {
+        for (k <- 0 until dimensions._2) {
+          print("\t%1.0f" format qFunction(j)(k).sum)
+        }
+        println
+      }
+      println("The implicit policy:")
+      for (j <- 0 until dimensions._1) {
+        for (k <- 0 until dimensions._2) {
+          print("\t")
+          if (grid(j)(k) == 'G' || grid(j)(k) == 'X') {
+            print(grid(j)(k))
+          } else {
+  	    val currentActions = qFunction(j)(k)
+	    val maxQ = currentActions.max
+	    val indicesWithMaxQ = currentActions.zipWithIndex.filter(_._1==maxQ).map(_._2)
+            indicesWithMaxQ.map(directionDescription(_).charAt(0)).foreach(print)
+          }
+        }
+        println
+      }
+      }
+    }
 
     println("DONE!")
   }
@@ -109,9 +133,12 @@ object GridWorld {
 	  stepCounter = stepCounter + 1
 	  rewardAccumulated = rewardAccumulated + reward
     }
-	println(stepCounter)
-	// println("Took " + stepCounter + " steps")
-	// println("Earned " + rewardAccumulated + " reward")
+	if (verbose) {
+          println("Took " + stepCounter + " steps")
+	  println("Earned " + rewardAccumulated + " reward")
+        } else {
+          println(stepCounter)
+        }
 	changedQFunction
   }
   
