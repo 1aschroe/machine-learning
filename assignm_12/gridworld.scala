@@ -3,13 +3,16 @@
 import scala.util.Random
 
 object GridWorld {
+  val epsilon = 0.1
+  val alpha = 0.5
+  val gamma = 0.9
 
   def main(args: Array[String]) = {
     val dimensions = (5,5)
     val grid = (generateGridWorld _).tupled(dimensions)
-//    grid.foreach((row: Array[Char]) => { row.foreach((element: Char) => print(element)); println; })
-    var valueFunction = Array.ofDim[Double](dimensions._1, dimensions._2)
-    runSimulation(grid)
+    grid.foreach(row => { row.foreach(print); println; })
+    var qFunction = Array.ofDim[Double](dimensions._1, dimensions._2, 4)
+    runSimulation(grid, qFunction)
 
     println("DONE!")
   }
@@ -30,44 +33,63 @@ object GridWorld {
     result
   }
   
-  private def runSimulation(grid: Array[Array[Char]]): Unit = {
+  private def getDirection(positionAgent: (Int, Int), qFunction : Array[Array[Array[Double]]]) : Int = {
+    if (Random.nextDouble > epsilon) {
+	  val currentActions = qFunction(positionAgent._1)(positionAgent._2)
+	  val maxQ = currentActions.max
+	  // print(positionAgent)
+	  // currentActions.foreach(print)
+	  // readLine
+	  currentActions.indexOf(maxQ)
+	} else {
+	  // println("epsilon")
+	  Random.nextInt(4)
+	}
+  }
+  
+  private def runSimulation(grid: Array[Array[Char]], qFunction : Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = {
     var positionAgent = (0, 0)
+	var lastPositionAgent = positionAgent
     var pathWent : List[(Int, Int)] = Nil
+	var changedQFunction = qFunction
     while (grid(positionAgent._1)(positionAgent._2) != 'G') {
-      val direction = Random.nextInt(4)
+	  val direction = getDirection(positionAgent, qFunction)
+	  // println(direction)
+	  val possibleNewPositionAgent : (Int, Int) = 
       direction match {
         case 0 => { // nach links
-          val newPositionAgent = (positionAgent._1, positionAgent._2 - 1)
-          if (newPositionAgent._2 >= 0 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
-            pathWent = positionAgent :: pathWent
-            positionAgent = newPositionAgent
-          }
+          (positionAgent._1, positionAgent._2 - 1)
         }
         case 1 => { // nach rechts
-          val newPositionAgent = (positionAgent._1, positionAgent._2 + 1)
-          if (newPositionAgent._2 <= grid(0).length - 1 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
-            pathWent = positionAgent :: pathWent
-            positionAgent = newPositionAgent
-          }
+          (positionAgent._1, positionAgent._2 + 1)
         }
         case 2 => { // nach unten
-          val newPositionAgent = (positionAgent._1 + 1, positionAgent._2)
-          if (newPositionAgent._1 <= grid.length - 1 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
-            pathWent = positionAgent :: pathWent
-            positionAgent = newPositionAgent
-          }
+          (positionAgent._1 + 1, positionAgent._2)
         }
         case 3 => { // nach oben
-          val newPositionAgent = (positionAgent._1 - 1, positionAgent._2)
-          if (newPositionAgent._1 > 0 && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
-            pathWent = positionAgent :: pathWent
-            positionAgent = newPositionAgent
-          }
+          (positionAgent._1 - 1, positionAgent._2)
         }
         case _ => {
           println("BAD!")
+		  (-1, -1)
         }
       }
+      val (nextPositionAgent, reward) = evaluateAction(positionAgent, grid, qFunction, direction, possibleNewPositionAgent)
+	  var changedQFunction = qFunction
+	  val nextDirection = getDirection(nextPositionAgent, qFunction)
+	  changedQFunction(positionAgent._1)(positionAgent._2)(direction) = qFunction(positionAgent._1)(positionAgent._2)(direction) + alpha*(reward + gamma*qFunction(nextPositionAgent._1)(nextPositionAgent._2)(nextDirection) + qFunction(positionAgent._1)(positionAgent._2)(direction))
+	  positionAgent = nextPositionAgent
     }
+	changedQFunction
+  }
+  
+  def evaluateAction(positionAgent : (Int, Int), grid : Array[Array[Char]], qFunction : Array[Array[Array[Double]]], direction : Int, newPositionAgent : (Int, Int)) : ((Int, Int), Double) = {
+     if ((0 until grid.length).contains(newPositionAgent._1) && (0 until grid(0).length).contains(newPositionAgent._2) && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
+       //pathWent = positionAgent :: pathWent
+	   val reward : Int = if (grid(newPositionAgent._1)(newPositionAgent._2) == 'G') 100 else -1;
+       (newPositionAgent, reward)
+     } else {
+	   (positionAgent, -1)
+	 }
   }
 }
