@@ -3,16 +3,21 @@
 import scala.util.Random
 
 object GridWorld {
+  val verbose = true
+
   val epsilon = 0.1
-  val alpha = 0.5
+  val alpha = 0.7
   val gamma = 0.9
 
+  val dimensions = (5,5)
+  val grid = (generateGridWorld _).tupled(dimensions)
+  grid.foreach(row => { row.foreach(print); println; })
+
   def main(args: Array[String]) = {
-    val dimensions = (5,5)
-    val grid = (generateGridWorld _).tupled(dimensions)
-    grid.foreach(row => { row.foreach(print); println; })
     var qFunction = Array.ofDim[Double](dimensions._1, dimensions._2, 4)
-    runSimulation(grid, qFunction)
+	for (i <- 1 to 500) {
+      qFunction = runSimulation(grid, qFunction)
+	}
 
     println("DONE!")
   }
@@ -33,28 +38,50 @@ object GridWorld {
     result
   }
   
+  private def printSituation(positionAgent : (Int, Int)) {
+    val before = grid(positionAgent._1)(positionAgent._2)
+	grid(positionAgent._1)(positionAgent._2) = 'o'
+	println
+    grid.foreach(row => { row.foreach(print); println; })
+	grid(positionAgent._1)(positionAgent._2) = before
+	readLine
+  }
+  
+  val directionDescription = Map(0 -> "left", 1 -> "right", 2 -> "down", 3 -> "up")
+  
   private def getDirection(positionAgent: (Int, Int), qFunction : Array[Array[Array[Double]]]) : Int = {
     if (Random.nextDouble > epsilon) {
-	  val currentActions = qFunction(positionAgent._1)(positionAgent._2)
-	  val maxQ = currentActions.max
-	  // print(positionAgent)
-	  // currentActions.foreach(print)
-	  // readLine
-	  currentActions.indexOf(maxQ)
+      getDeterministicDirection(positionAgent, qFunction)
 	} else {
-	  // println("epsilon")
+	  if (verbose) println("Chose epsilon-strategy to walk randomly")
 	  Random.nextInt(4)
 	}
   }
   
+  private def getDeterministicDirection(positionAgent: (Int, Int), qFunction : Array[Array[Array[Double]]]) : Int = {
+  	val currentActions = qFunction(positionAgent._1)(positionAgent._2)
+	val maxQ = currentActions.max
+	if (verbose) {
+	  println("==================")
+	  for (i <- 0 until currentActions.length) println(directionDescription(i) + ": " + currentActions(i))
+	  println("==================")
+	}
+	// we want to find all indices, with value maxQ
+	val indicesWithMaxQ = currentActions.zipWithIndex.filter(_._1==maxQ).map(_._2)
+	// then we randomly pick one of these indices
+	Random.shuffle(indicesWithMaxQ.toList).head
+  }
   private def runSimulation(grid: Array[Array[Char]], qFunction : Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = {
     var positionAgent = (0, 0)
 	var lastPositionAgent = positionAgent
-    var pathWent : List[(Int, Int)] = Nil
 	var changedQFunction = qFunction
+	var stepCounter = 0
+	var rewardAccumulated = 0
+	
     while (grid(positionAgent._1)(positionAgent._2) != 'G') {
+	  if (verbose) printSituation(positionAgent)
 	  val direction = getDirection(positionAgent, qFunction)
-	  // println(direction)
+	  if (verbose) println("Want to go " + directionDescription(direction))
 	  val possibleNewPositionAgent : (Int, Int) = 
       direction match {
         case 0 => { // nach links
@@ -74,19 +101,23 @@ object GridWorld {
 		  (-1, -1)
         }
       }
-      val (nextPositionAgent, reward) = evaluateAction(positionAgent, grid, qFunction, direction, possibleNewPositionAgent)
-	  var changedQFunction = qFunction
-	  val nextDirection = getDirection(nextPositionAgent, qFunction)
-	  changedQFunction(positionAgent._1)(positionAgent._2)(direction) = qFunction(positionAgent._1)(positionAgent._2)(direction) + alpha*(reward + gamma*qFunction(nextPositionAgent._1)(nextPositionAgent._2)(nextDirection) + qFunction(positionAgent._1)(positionAgent._2)(direction))
+      val (nextPositionAgent, reward) = evaluateAction(positionAgent, grid, changedQFunction, direction, possibleNewPositionAgent)
+	  val nextDirection = getDirection(nextPositionAgent, changedQFunction)
+	  if (verbose) println("Changing " + changedQFunction(positionAgent._1)(positionAgent._2)(direction) + " to " + changedQFunction(positionAgent._1)(positionAgent._2)(direction) + " + " + alpha + "*(" + reward + " + " + gamma*changedQFunction(nextPositionAgent._1)(nextPositionAgent._2)(nextDirection) + " + " + changedQFunction(positionAgent._1)(positionAgent._2)(direction) + ") = " + (changedQFunction(positionAgent._1)(positionAgent._2)(direction) + alpha*(reward + gamma*changedQFunction(nextPositionAgent._1)(nextPositionAgent._2)(nextDirection) + changedQFunction(positionAgent._1)(positionAgent._2)(direction))))
+	  changedQFunction(positionAgent._1)(positionAgent._2)(direction) = changedQFunction(positionAgent._1)(positionAgent._2)(direction) + alpha*(reward + gamma*changedQFunction(nextPositionAgent._1)(nextPositionAgent._2)(nextDirection) + changedQFunction(positionAgent._1)(positionAgent._2)(direction))
 	  positionAgent = nextPositionAgent
+	  stepCounter = stepCounter + 1
+	  rewardAccumulated = rewardAccumulated + reward
     }
+	println(stepCounter)
+	// println("Took " + stepCounter + " steps")
+	// println("Earned " + rewardAccumulated + " reward")
 	changedQFunction
   }
   
-  def evaluateAction(positionAgent : (Int, Int), grid : Array[Array[Char]], qFunction : Array[Array[Array[Double]]], direction : Int, newPositionAgent : (Int, Int)) : ((Int, Int), Double) = {
+  def evaluateAction(positionAgent : (Int, Int), grid : Array[Array[Char]], qFunction : Array[Array[Array[Double]]], direction : Int, newPositionAgent : (Int, Int)) : ((Int, Int), Int) = {
      if ((0 until grid.length).contains(newPositionAgent._1) && (0 until grid(0).length).contains(newPositionAgent._2) && grid(newPositionAgent._1)(newPositionAgent._2) != 'X') {
-       //pathWent = positionAgent :: pathWent
-	   val reward : Int = if (grid(newPositionAgent._1)(newPositionAgent._2) == 'G') 100 else -1;
+	   val reward = if (grid(newPositionAgent._1)(newPositionAgent._2) == 'G') 100 else -1;
        (newPositionAgent, reward)
      } else {
 	   (positionAgent, -1)
