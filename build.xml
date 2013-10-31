@@ -19,8 +19,8 @@
 		<zip destfile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.zip" basedir="${ass.dir}" includes="*.m,*.mat" />
 		<copy file="${ass.dir}/assignment${assignment.no}.pdf" overwrite="true" tofile="${ass.dir}/assignment_${assignment.no}_SchroederOswaldBakardzhiev.pdf" />
 		<mail
-		    tolist="Alamgir@informatik.uni-hamburg.de"
-		    cclist="Angel.Bakardzhiev@informatik.uni-hamburg.de,Falk.Oswald@informatik.uni-hamburg.de,Arne.Schroeder@informatik.uni-hamburg.de"
+		    tolist="Angel.Bakardzhiev@informatik.uni-hamburg.de"
+		    cclist="Angel.Bakardzhiev@informatik.uni-hamburg.de"
 		    from="${mail.user}@informatik.uni-hamburg.de"
 		    subject="[ML] Assignment ${assignment.no} (Bakardzhiev, Oswald, Schröder)"
 		    mailhost="${mail.smtp}"
